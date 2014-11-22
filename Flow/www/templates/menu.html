@@ -8,22 +8,26 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <header class="bar bar-header bar-stable">
+    <!-- <header class="bar bar-header bar-stable">
       <h1 class="title">Left</h1>
-    </header>
-    <ion-content class="has-header">
+    </header> -->
+    <ion-content class="">
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
+        <ion-item nav-clear menu-close class="item-icon-left">
+          <i class="icon ion-ios7-home"></i>
+          Home
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/search">
-          Search
+        <ion-item nav-clear menu-close class="item-icon-left">
+          <i class="icon ion-ios7-plus"></i>
+          Create New Project
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
-          Browse
+        <ion-item nav-clear menu-close class="item-icon-left">
+          <i class="icon ion-ios7-browsers"></i>
+          Browse Existing Projects
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/playlists">
-          Playlists
+        <ion-item nav-clear menu-close class="item-icon-left">
+          <i class="icon ion-ios7-lightbulb"></i>
+          Ideaboard
         </ion-item>
       </ion-list>
     </ion-content>
