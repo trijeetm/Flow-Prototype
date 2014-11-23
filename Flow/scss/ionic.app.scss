@@ -18,6 +18,7 @@ $stable:                          #051a37 !default;
 $dark:                            #222 !default;
 
 $base-background-color:           #f2f2f2 !default;
+$button-stable-text:              $light !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -34,4 +35,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		// font-family: $font-family-thin-sans-serif;
 		font-weight: 200;
 	}
+}
+
+ion-nav-view {
+	background-color: $light 
+}
+
+.light {
+	color: $light !important;
+}
+
+a {
+	text-decoration: none;
 }

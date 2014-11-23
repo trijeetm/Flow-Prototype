@@ -2,7 +2,9 @@
 
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-      <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+      <ion-nav-back-button class="button-clear">
+        <i class="icon ion-ios7-arrow-back"></i> Back
+      </ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
   </ion-side-menu-content>
@@ -13,10 +15,12 @@
     </header> -->
     <ion-content class="">
       <ion-list>
-        <ion-item nav-clear menu-close class="item-icon-left">
-          <i class="icon ion-ios7-home"></i>
-          Home
-        </ion-item>
+        <a href="#/app/home">
+          <ion-item nav-clear menu-close class="item-icon-left">
+            <i class="icon ion-ios7-home"></i>
+            Home
+          </ion-item>
+        </a>
         <ion-item nav-clear menu-close class="item-icon-left">
           <i class="icon ion-ios7-plus"></i>
           Create New Project
@@ -25,10 +29,12 @@
           <i class="icon ion-ios7-browsers"></i>
           Browse Existing Projects
         </ion-item>
-        <ion-item nav-clear menu-close class="item-icon-left">
-          <i class="icon ion-ios7-lightbulb"></i>
-          Ideaboard
-        </ion-item>
+        <a href="#/app/ideaboard">
+          <ion-item nav-clear menu-close class="item-icon-left">
+            <i class="icon ion-ios7-lightbulb"></i>
+            Ideaboard
+          </ion-item>
+        </a>
       </ion-list>
     </ion-content>
   </ion-side-menu>
