@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent' :{
           templateUrl: "templates/ideaboard.html",
-          // controller: 'IdeaboardCtrl'
+          controller: 'IdeaboardCtrl'
         }
       }
     })

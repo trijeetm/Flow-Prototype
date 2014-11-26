@@ -30,17 +30,21 @@ angular.module('starter.controllers', [])
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
+  
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, $rootScope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
     { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { title: 'Cowbell', id: 6 },
+    { title: 'Trijeet', id: 7 },
+    { title: 'Genie', id: 8 }, 
+    { title: 'Ken', id: 9 }
   ];
 })
 
@@ -48,4 +52,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope) {
+})
+
+.controller('IdeaboardCtrl', function($scope) {
 });
