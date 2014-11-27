@@ -12,13 +12,15 @@ $stable:                          #051a37 !default;
 // $positive:                        #387ef5 !default;
 // $calm:                            #11c1f3 !default;
 // $balanced:                        #33cd5f !default;
-// $energized:                       #ffc900 !default;
+$energized:                       #9dc02e !default;
 // $assertive:                       #ef473a !default;
 // $royal:                           #886aea !default;
 $dark:                            #222 !default;
 
 $base-background-color:           #f2f2f2 !default;
 $button-stable-text:              $light !default;
+
+$idea-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1) !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -27,7 +29,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 .menu {
-	background-color: $light;
+	background-color: $dark;
 	.item {
 		border: none;
 		background-color: $dark;
@@ -47,4 +49,33 @@ ion-nav-view {
 
 a {
 	text-decoration: none;
+}
+
+.idea {
+	// display: inline-block;
+	// width: 48%;
+	background-color: #fff;
+	margin-bottom: 2%;
+	box-shadow: ($idea-shadow);
+	// margin-right: 1%;
+	// margin-left: 1%;
+
+	.desc {
+		font-size: 12px;
+		line-height: 1;
+	}
+
+	h4 {
+		font-size: 16px;
+	}
+}
+
+.ideaboard {
+	width: 96%;
+	margin: 0 auto;
+	margin-top: 3%;
+}
+
+.energized-button {
+	color: $energized !important; 
 }

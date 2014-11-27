@@ -1,40 +1,56 @@
-angular.module('starter.controllers', [])
+var Flow = angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+// Flow.factory('ideaboard', [function () {
+//   var inspirations = [];
+//   inspirations.push(
+//     { title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth" },
+//     { title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale" }
+//   );
+//   return inspirations;
+// }])
+
+Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location) {
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.AIData = {};
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  // Create the AI modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/newInspiration.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.AIModal = modal;
   });
 
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
+  $scope.closeAIModal = function() {
+    $scope.AIModal.hide();
   };
 
   // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
+  $scope.openAIModal = function() {
+    $scope.AIModal.show();
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
+  $scope.addNewInspiration = function() {
+    console.log('Creating new inspiration', $scope.AIData);
+    $scope.addInspiration($scope.AIData);
+    $scope.AIData = {};
     $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  
+      $scope.closeAIModal();
+      $location = '#/app/ideaboard';
+    }, 100);
   };
+
+  $scope.addInspiration = function (newInspiration) {
+    ideaboard.insert(newInspiration);
+  };
+
+  // WoZ for ideaboard
+  $scope.addInspiration({ title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth" });
+  $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale" });
 })
 
-.controller('PlaylistsCtrl', function($scope, $rootScope) {
+Flow.controller('PlaylistsCtrl', function($scope, $rootScope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -48,11 +64,13 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+Flow.controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('HomeCtrl', function($scope) {
+Flow.controller('HomeCtrl', function($scope) {
+
 })
 
-.controller('IdeaboardCtrl', function($scope) {
+Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
+  $scope.ideaboard = ideaboard.ideas;
 });
