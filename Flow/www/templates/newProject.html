@@ -7,11 +7,27 @@
   <ion-nav-buttons side="right">
     <button class="button button-icon energized-button icon ion-ios7-lightbulb" ng-click="openAIModal()"></button>
   </ion-nav-buttons>
-  <ion-content class="has-header">
 
+  <ion-content class="has-header">
+    <h1 class="viewTitle">Create New Project</h1>
+    
+    <form ng-submit="">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" placeholder="New Project Title">
+        </label>
+        <label class="item item-input">
+          <textarea placeholder="Description"></textarea>
+        </label>
+        <!-- <label class="item"> -->
+          <button class="button button-block button-positive button-bottom" type="submit">Create Project</button>
+        <!-- </label> -->
+      </div>
+    </form>
+<!-- 
     <div class="newproject">
       <h1>New Project</h1>
-      <select> <!-- someone pls style 4 me... -->
+      <select>
         <option value="default">Select Project Category...</option>
         <option value="value1">Genie</option>
         <option value="value2">Trijeet</option>
@@ -22,8 +38,6 @@
         <br>Description: <input type="text" maxlength="500"><br>
         <input type="submit" class="newproject" value="Create New Project">
       </form>
-    </div>
-    <!-- <button class="button button-positive button-block" ng-click="addInspiration({ title: 'foo', desc: 'bar' })">Add new inspiration</button>
-    <button class="button button-positive button-block" ng-click="addInspiration({ title: 'foo1', desc: 'bar1' })">Add new inspiration 2</button> -->
+    </div> -->
   </ion-content>
 </ion-view>
