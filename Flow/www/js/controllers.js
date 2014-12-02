@@ -37,8 +37,8 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
     $scope.AIData = {};
     $timeout(function() {
       $scope.closeAIModal();
-      $location = '#/app/ideaboard';
-    }, 100);
+      $location.path('/app/ideaboard');
+    }, 50);
   };
 
   $scope.addInspiration = function (newInspiration) {
