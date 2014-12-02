@@ -7840,3 +7840,22 @@ a {
 
 .energized-button {
   color: #9dc02e !important; }
+
+.newproject {
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+
+.description {
+  height: 250px;
+}
+
+
+
+input[type=submit].newproject {
+  width:75%;
+  height:10%;
+  margin-left: 15%;
+  margin-top: 35%;
+}

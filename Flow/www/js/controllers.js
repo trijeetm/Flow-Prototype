@@ -71,6 +71,10 @@ Flow.controller('HomeCtrl', function($scope) {
 
 })
 
+Flow.controller('NewProjectCtrl', function($scope) {
+  
+})
+
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
   $scope.ideaboard = ideaboard.ideas;
 });
