@@ -88,6 +88,7 @@ Flow.controller('ProjectsCtrl', function($scope, projects) {
 
 Flow.controller('ProjectCtrl', function($scope, projects) {
   $scope.id = 1;
+  $scope.project = projects.projects[$scope.id];
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
