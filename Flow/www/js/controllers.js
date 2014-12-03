@@ -1,14 +1,5 @@
 var Flow = angular.module('starter.controllers', [])
 
-// Flow.factory('ideaboard', [function () {
-//   var inspirations = [];
-//   inspirations.push(
-//     { title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth" },
-//     { title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale" }
-//   );
-//   return inspirations;
-// }])
-
 Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location) {
   // Form data for the login modal
   $scope.AIData = {};
@@ -71,8 +62,21 @@ Flow.controller('HomeCtrl', function($scope) {
 
 })
 
-Flow.controller('NewProjectCtrl', function($scope) {
-  
+Flow.controller('NewProjectCtrl', function($scope, $timeout, $location, projects) {
+  $scope.newProjectData = {};
+
+  $scope.createNewProject = function () {
+    console.log($scope.newProjectData);
+    projects.insert($scope.newProjectData);
+    $timeout(function () {
+      $location.path('/app/projects');
+    }, 100);
+  }
+})
+
+Flow.controller('ProjectsCtrl', function($scope, projects) {
+  console.log(projects.projects)
+  $scope.projects = projects.projects;
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {

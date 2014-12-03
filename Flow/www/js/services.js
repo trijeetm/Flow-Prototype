@@ -1,14 +1,5 @@
 angular.module('starter.services', [])
 
-.factory('_ideaboard', [function () {
-  var inspirations = [];
-  inspirations.push(
-    { title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth" },
-    { title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale" }
-  );
-  return inspirations;
-}])
-
 .factory('ideaboard', function ($q) {
 	var STORAGE_ID = 'ideaboard-angularjs';
 
@@ -61,6 +52,66 @@ angular.module('starter.services', [])
 
 			store._saveToLocalStorage(store.ideas);
 			deferred.resolve(store.ideas);
+
+			return deferred.promise;
+		}
+	};
+
+	return store;
+})
+
+.factory('projects', function ($q) {
+	var STORAGE_ID = 'projects-angularjs';
+
+	var store = {
+		projects: [],
+
+		_getFromLocalStorage: function () {
+			return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+		},
+
+		_saveToLocalStorage: function (projects) {
+			localStorage.setItem(STORAGE_ID, JSON.stringify(projects));
+		},
+
+		delete: function (project) {
+			var deferred = $q.defer();
+
+			store.projects.splice(store.projects.indexOf(project), 1);
+
+			store._saveToLocalStorage(store.projects);
+			deferred.resolve(store.projects);
+
+			return deferred.promise;
+		},
+
+		get: function () {
+			var deferred = $q.defer();
+
+			angular.copy(store._getFromLocalStorage(), store.projects);
+			deferred.resolve(store.projects);
+
+			return deferred.promise;
+		},
+
+		insert: function (project) {
+			var deferred = $q.defer();
+
+			store.projects.push(project);
+
+			store._saveToLocalStorage(store.projects);
+			deferred.resolve(store.projects);
+
+			return deferred.promise;
+		},
+
+		put: function (project, index) {
+			var deferred = $q.defer();
+
+			store.projects[index] = project;
+
+			store._saveToLocalStorage(store.projects);
+			deferred.resolve(store.projects);
 
 			return deferred.promise;
 		}

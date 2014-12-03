@@ -11,17 +11,17 @@
   <ion-content class="has-header">
     <h1 class="viewTitle">Create New Project</h1>
     
-    <form ng-submit="">
+    <form ng-submit="createNewProject()">
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="New Project Title">
+          <input type="text" placeholder="New Project Title" ng-model="newProjectData.title">
         </label>
         <label class="item item-input">
-          <textarea placeholder="Description"></textarea>
+          <textarea placeholder="Description" ng-model="newProjectData.desc"></textarea>
         </label>
-        <!-- <label class="item"> -->
-          <button class="button button-block button-positive button-bottom" type="submit">Create Project</button>
-        <!-- </label> -->
+
+        <button class="button button-block button-stable button-primary" type="submit">Create Project</button>
+
       </div>
     </form>
 <!-- 
