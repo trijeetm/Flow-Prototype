@@ -1,6 +1,6 @@
 var Flow = angular.module('starter.controllers', [])
 
-Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location, projects, tasklist) {
+Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location, projects, tasklist, notelist) {
   // Form data for the login modal
   $scope.AIData = {};
 
@@ -50,6 +50,13 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   tasklist.insert({ projectId: 1, title: 'Task 3', desc: 'This is complicated task.' });
   tasklist.insert({ projectId: 2, title: 'Task 4', desc: 'This is complicated task.' });
   tasklist.insert({ projectId: 2, title: 'Task 5', desc: 'This is complicated task.' });
+
+  // WoZ notelist
+  notelist.insert({ projectId: 1, title: 'Note 1', desc: 'This is inspiring note.' });
+  notelist.insert({ projectId: 1, title: 'Note 2', desc: 'This is inspiring note.' });
+  notelist.insert({ projectId: 2, title: 'Note 3', desc: 'This is inspiring note.' });
+  notelist.insert({ projectId: 2, title: 'Note 4', desc: 'This is inspiring note.' });
+  notelist.insert({ projectId: 2, title: 'Note 5', desc: 'This is inspiring note.' });
 })
 
 Flow.controller('PlaylistsCtrl', function($scope, $rootScope) {
@@ -93,13 +100,25 @@ Flow.controller('ProjectsCtrl', function($scope, projects) {
   $scope.projects = projects.projects;
 })
 
-Flow.controller('ProjectCtrl', function($scope, projects, tasklist) {
+Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist) {
   $scope.id = 1;
   $scope.project = projects.projects[$scope.id];
 
-  $scope.tasks = tasklist.tasks;
+  filterListByProjectId = function(list, id) {
+    filteredList = [];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].projectId == id) {
+        filteredList.push(list[i]);
+      };
+    };
+    return filteredList;
+  };
+
+  $scope.tasks = filterListByProjectId(tasklist.tasks, 1);
+  $scope.notes = filterListByProjectId(notelist.notes, 1);
 
   console.log($scope.tasks);
+  console.log($scope.notes);
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
