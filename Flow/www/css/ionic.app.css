@@ -4778,30 +4778,30 @@ a.item-content {
   padding-bottom: 1px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
 
-.padding .card, .padding .container, .padding .list-inset, .padding .container {
+.padding .card, .padding .container, .padding .underConstruction, .padding .list-inset, .padding .container, .padding .underConstruction {
   margin-left: 0;
   margin-right: 0; }
 
-.card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child, .padding > .list .container {
+.card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child, .padding > .list .container, .padding > .list .underConstruction {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px; }
-  .card .item:first-child .item-content, .list-inset .item:first-child .item-content, .padding > .list .item:first-child .item-content, .padding > .list .item:first-child .container {
+  .card .item:first-child .item-content, .list-inset .item:first-child .item-content, .padding > .list .item:first-child .item-content, .padding > .list .item:first-child .container, .padding > .list .item:first-child .underConstruction {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px; }
-.card .item:last-child, .list-inset .item:last-child, .padding > .list .item:last-child, .padding > .list .container {
+.card .item:last-child, .list-inset .item:last-child, .padding > .list .item:last-child, .padding > .list .container, .padding > .list .underConstruction {
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px; }
-  .card .item:last-child .item-content, .list-inset .item:last-child .item-content, .padding > .list .item:last-child .item-content, .padding > .list .item:last-child .container {
+  .card .item:last-child .item-content, .list-inset .item:last-child .item-content, .padding > .list .item:last-child .item-content, .padding > .list .item:last-child .container, .padding > .list .item:last-child .underConstruction {
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px; }
 
 .card .item:last-child, .list-inset .item:last-child {
   margin-bottom: -1px; }
 
-.card .item, .list-inset .item, .padding > .list .item, .padding > .list .container, .padding-horizontal > .list .item {
+.card .item, .list-inset .item, .padding > .list .item, .padding > .list .container, .padding > .list .underConstruction, .padding-horizontal > .list .item {
   margin-right: 0;
   margin-left: 0; }
-  .card .item.item-input input, .list-inset .item.item-input input, .padding > .list .item.item-input input, .padding > .list .item.item-input .container, .padding-horizontal > .list .item.item-input input {
+  .card .item.item-input input, .list-inset .item.item-input input, .padding > .list .item.item-input input, .padding > .list .item.item-input .container, .padding > .list .item.item-input .underConstruction, .padding-horizontal > .list .item.item-input input {
     padding-right: 44px; }
 
 .padding-left > .list .item {
@@ -6070,7 +6070,7 @@ progress {
       box-shadow: none;
       color: #fff; }
 
-.padding > .button.button-block:first-child, .padding > .container {
+.padding > .button.button-block:first-child, .padding > .container, .padding > .underConstruction {
   margin-top: 0; }
 
 .button-block {
@@ -7580,7 +7580,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
  * Content Padding
  * --------------------------------------------------
  */
-.padding, .container {
+.padding, .container, .underConstruction {
   padding: 10px; }
 
 .padding-top, .padding-vertical {
@@ -7841,7 +7841,7 @@ a {
 .energized-button {
   color: #9dc02e !important; }
 
-.padding, .container {
+.padding, .container, .underConstruction {
   padding: 24px !important; }
 
 .margin {
@@ -7866,3 +7866,19 @@ textarea {
 
 .button-primary {
   margin-top: 48px !important; }
+
+.underConstruction {
+  text-align: center; }
+  .underConstruction i.heroIcon {
+    font-size: 240px;
+    color: #d8d8d8; }
+  .underConstruction .title {
+    font-size: 24px;
+    color: #555555;
+    font-weight: 700;
+    margin-top: 18px; }
+  .underConstruction .text {
+    font-size: 18px;
+    color: #9b9b9b;
+    font-weight: 200;
+    margin-top: 12px; }

@@ -17,6 +17,12 @@ $energized:                       #9dc02e !default;
 // $royal:                           #886aea !default;
 $dark:                            #222 !default;
 
+// color scheme
+$grey1: #d8d8d8;
+$grey2: #b5b5b5;
+$grey3: #9b9b9b;
+$grey4: #555555;
+
 $base-background-color:           #f2f2f2 !default;
 $button-stable-text:              $light !default;
 
@@ -113,4 +119,29 @@ textarea {
 
 .button-primary {
 	margin-top: $base-font-size * 8 !important;
+}
+
+.underConstruction {
+	@extend .padding;
+
+	text-align: center;
+
+	i.heroIcon {
+		font-size: 40 * $base-font-size;
+		color: $grey1;
+	}
+
+	.title {
+		font-size: 4 * $base-font-size;
+		color: $grey4;
+		font-weight: 700;
+		margin-top: 3 * $base-font-size;
+	}
+
+	.text {
+		font-size: 3 * $base-font-size;
+		color: $grey3;
+		font-weight: 200;
+		margin-top: 2 * $base-font-size;	
+	}
 }

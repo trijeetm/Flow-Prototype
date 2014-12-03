@@ -111,7 +111,6 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
   $scope.project = projects.projects[$scope.id - 1];
 
   filterListByProjectId = function(list, id) {
-    console.log('filtering');
     filteredList = [];
     for (var i = 0; i < list.length; i++) {
       if (list[i].projectId == id) {
@@ -123,11 +122,14 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
 
   var _tasks = filterListByProjectId(tasklist.tasks, $scope.id);
   for (var i = 0; i < _tasks.length; i++) {
-    if (_tasks[i].deadline == null) {
-      _tasks[i].deadline = 'Schedule task';
+    console.log(_tasks[i].deadline);
+    if (_tasks[i].deadline === null) {
+      _tasks[i].deadlineStr = 'Schedule task';
     }
     else {
-      _tasks[i].deadline = _tasks[i].deadline.getDate() + "." + _tasks[i].deadline.getMonth() + "." + _tasks[i].deadline.getFullYear(); 
+      if (typeof _tasks[i].deadline != 'string') {
+        _tasks[i].deadlineStr = _tasks[i].deadline.getDate() + "." + _tasks[i].deadline.getMonth() + "." + _tasks[i].deadline.getFullYear();     
+      };
     };
   };
   $scope.tasks = _tasks;
@@ -154,11 +156,14 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location) {
 
   $scope.task = findTaskById(taskId);
 
-  if ($scope.task.deadline == null) {
-    $scope.task.deadline = 'Schedule task';
+  console.log('deadline:', $scope.task.deadline);
+  if ($scope.task.deadline === null) {
+    $scope.task.deadlineStr = 'Schedule task';
   }
   else {
-    $scope.task.deadline = $scope.task.deadline.getDate() + "." + $scope.task.deadline.getMonth() + "." + $scope.task.deadline.getFullYear(); 
+    if (typeof $scope.task.deadline != 'string') {
+      $scope.task.deadlineStr = $scope.task.deadline.getDate() + "." + $scope.task.deadline.getMonth() + "." + $scope.task.deadline.getFullYear();     
+    };
   };
 
   console.log($scope.task);
@@ -166,4 +171,11 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location) {
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
   $scope.ideaboard = ideaboard.ideas;
+})
+
+Flow.controller('404Ctrl', function($scope, $window) {
+  var goBack = function() {
+      $window.history.back();
+  };
+  $scope.goBack = goBack;
 });

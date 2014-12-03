@@ -126,9 +126,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'PlaylistCtrl'
         }
       }
+    })
+
+    .state('app.404', {
+      url: "/404",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/404.html",
+          controller: '404Ctrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/404');
 });
 

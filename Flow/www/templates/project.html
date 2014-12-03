@@ -16,7 +16,7 @@
       <ion-item ng-repeat="task in tasks">
         <a href="/#/app/projects/{{project.id}}/tasks/{{task.id}}"> 
           <h2>{{task.id}}. {{task.title}}</h2>
-          <h5>{{task.deadline}}</h5>
+          <h5>{{task.deadlineStr}}</h5>
           <h3>{{task.desc}}</h3>
         </a>
       </ion-item>
