@@ -104,10 +104,13 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
   $scope.id = $location.$$url.substring(
     '/app/projects/'.length, $location.$$url.length
   );
-  
+  $scope.tasks = [];
+  $scope.notes = [];
+
   $scope.project = projects.projects[$scope.id - 1];
 
   filterListByProjectId = function(list, id) {
+    console.log('filtering');
     filteredList = [];
     for (var i = 0; i < list.length; i++) {
       if (list[i].projectId == id) {
@@ -120,8 +123,8 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
   $scope.tasks = filterListByProjectId(tasklist.tasks, $scope.id);
   $scope.notes = filterListByProjectId(notelist.notes, $scope.id);
 
-  console.log($scope.tasks);
-  console.log($scope.notes);
+  console.log('tasks:', $scope.tasks);
+  console.log('notes:',$scope.notes);
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
