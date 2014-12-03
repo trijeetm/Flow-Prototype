@@ -100,9 +100,12 @@ Flow.controller('ProjectsCtrl', function($scope, projects) {
   $scope.projects = projects.projects;
 })
 
-Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist) {
-  $scope.id = 1;
-  $scope.project = projects.projects[$scope.id];
+Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $location) {
+  $scope.id = $location.$$url.substring(
+    '/app/projects/'.length, $location.$$url.length
+  );
+  
+  $scope.project = projects.projects[$scope.id - 1];
 
   filterListByProjectId = function(list, id) {
     filteredList = [];
@@ -114,8 +117,8 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist) {
     return filteredList;
   };
 
-  $scope.tasks = filterListByProjectId(tasklist.tasks, 1);
-  $scope.notes = filterListByProjectId(notelist.notes, 1);
+  $scope.tasks = filterListByProjectId(tasklist.tasks, $scope.id);
+  $scope.notes = filterListByProjectId(notelist.notes, $scope.id);
 
   console.log($scope.tasks);
   console.log($scope.notes);
