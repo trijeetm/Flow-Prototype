@@ -9,6 +9,18 @@
 	</ion-nav-buttons>
   <ion-content class="has-header">
   	<!-- Add content here -->
-  	
+  	<h1 style="text-align:center">{{project.title}}</h1>
+    <h2 style="text-align:center">{{project.desc}}</h2>
+    <br><div style="text-align:center"> Upcoming Deadlines ({{tasks.length}})</div><br>
+    <div class="item item-text-wrap" ng-repeat="task in tasks">
+      <h4>{{task.title}}</h4>
+      <span class="desc">{{task.desc}}</span>
+    </div>
+    <br><div style="text-align:center"> Notes ({{notes.length}})</div><br>
+    <div class="item item-text-wrap" ng-repeat="note in notes">
+      <h4>{{note.title}}</h4>
+      <span class="desc">{{note.desc}}</span>
+    </div>
+
   </ion-content>
 </ion-view>
