@@ -9,6 +9,11 @@
 	</ion-nav-buttons>
   <ion-content class="has-header">
   	<!-- Add content here -->
-
+  	<ion-list>
+      <ion-item ng-repeat="project in projects">
+        <h1>{{project.id}}. {{project.title}}</h1>
+        <h3>{{project.desc}}</h3>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
