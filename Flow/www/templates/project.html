@@ -13,7 +13,7 @@
     <h2 style="text-align:center">{{project.desc}}</h2>
     <br><div style="text-align:center"> Upcoming Deadlines ({{tasks.length}})</div><br>
     <div class="item item-text-wrap" ng-repeat="task in tasks">
-      <h2>{{task.title}}</h2>
+      <h2>{{task.id}}. {{task.title}}</h2>
       <h5>{{task.deadline}}</h5>
       <span class="desc">{{task.desc}}</span>
     </div>

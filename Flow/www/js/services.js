@@ -97,6 +97,8 @@ angular.module('starter.services', [])
 		insert: function (task) {
 			var deferred = $q.defer();
 
+			task.id = store.tasks.length + 1;
+
 			store.tasks.push(task);
 
 			store._saveToLocalStorage(store.tasks);
@@ -156,6 +158,8 @@ angular.module('starter.services', [])
 
 		insert: function (item) {
 			var deferred = $q.defer();
+
+			item.id = store.notes.length + 1;
 
 			store.notes.push(item);
 

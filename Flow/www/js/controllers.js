@@ -139,6 +139,31 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
   // modals
 })
 
+Flow.controller('TaskCtrl', function($scope, tasklist, $location) {
+  var taskId = $location.$$url.substring(
+    $location.$$url.search('/tasks/') + '/tasks/'.length, $location.$$url.length
+  );
+
+  var findTaskById = function(id) {
+    for (var i = 0; i < tasklist.tasks.length; i++) {
+      if (tasklist.tasks[i].id == id) {
+        return tasklist.tasks[i];
+      };
+    };
+  }
+
+  $scope.task = findTaskById(taskId);
+
+  if ($scope.task.deadline == null) {
+    $scope.task.deadline = 'Schedule task';
+  }
+  else {
+    $scope.task.deadline = $scope.task.deadline.getDate() + "." + $scope.task.deadline.getMonth() + "." + $scope.task.deadline.getFullYear(); 
+  };
+
+  console.log($scope.task);
+})
+
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
   $scope.ideaboard = ideaboard.ideas;
 });
