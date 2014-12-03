@@ -9,11 +9,12 @@
 	</ion-nav-buttons>
 	
   <ion-content class="has-header">
-  	<div class="ideaboard">
-  	  <div class="item item-text-wrap idea" ng-repeat="idea in ideaboard">
-  	    <h4>{{idea.title}}</h4>
-	      <span class="desc">{{idea.desc}}</span>
-  	  </div>
+  	<div class="ideaboard container">
+		<div class="seperator">Ideaboard</div>
+  	  	<div class="item item-text-wrap idea" ng-repeat="idea in ideaboard">
+  	    	<h4>{{idea.title}}</h4>
+	      	<span class="desc">{{idea.desc}}</span>
+  	  	</div>
   	</div>
   	<!-- <button class="button button-positive button-block" ng-click="addInspiration({ title: 'foo', desc: 'bar' })">Add new inspiration</button>
   	<button class="button button-positive button-block" ng-click="addInspiration({ title: 'foo1', desc: 'bar1' })">Add new inspiration 2</button> -->

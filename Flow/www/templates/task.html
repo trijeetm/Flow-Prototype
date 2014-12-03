@@ -15,7 +15,7 @@
   		<div class="desc">{{task.deadlineStr}}</div>
   	</div> -->
 
-  	<form ng-submit="">
+  	<form ng-submit="saveNode()">
       <div class="list">
         <label class="item item-input">
           <input type="text" ng-model="task.title">
@@ -49,10 +49,9 @@
           <textarea placeholder="Description" ng-model="task.desc"></textarea>
         </label>
 
-
-
-
-        <button class="button button-block button-stable button-primary" type="submit">Save Changes</button>
+        <button class="button button-block button-stable button-primary" ng-click="goBack()">
+            Save changes
+        </button>
 
       </div>
     </form>

@@ -22,6 +22,7 @@ $grey1: #d8d8d8;
 $grey2: #b5b5b5;
 $grey3: #9b9b9b;
 $grey4: #555555;
+$flow-grey: #666666;
 
 $base-background-color:           #f2f2f2 !default;
 $button-stable-text:              $light !default;
@@ -86,6 +87,7 @@ a {
 
 .padding {
 	padding: $base-font-size * 4 !important;
+	padding-top: $base-font-size * 2 !important;
 }
 
 .margin {
@@ -94,6 +96,15 @@ a {
 
 .container {
 	@extend .padding;
+}
+
+.seperator {
+	text-align: center;
+	font-size: 2 * $base-font-size;
+	margin-bottom: 2 * $base-font-size;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: $flow-grey;
 }
 
 .viewTitle {
@@ -144,4 +155,8 @@ textarea {
 		font-weight: 200;
 		margin-top: 2 * $base-font-size;	
 	}
+}
+
+.center {
+	text-align: center;
 }

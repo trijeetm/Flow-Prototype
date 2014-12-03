@@ -9,21 +9,31 @@
 	</ion-nav-buttons>
   <ion-content class="has-header">
   	<!-- Add content here -->
-  	<h1 style="text-align:center">{{project.title}}</h1>
-    <h2 style="text-align:center">{{project.desc}}</h2>
-    <br><div style="text-align:center"> Tasks ({{tasks.length}})</div><br>
-    <ion-list>
-      	<ion-item ng-repeat="task in tasks" href="#/app/projects/{{project.id}}/tasks/{{task.id}}">
-			<h2>{{task.id}}. {{task.title}}</h2>
-			<h5>{{task.deadlineStr}}</h5>
-			<h3>{{task.desc}}</h3>
-      	</ion-item>
-    </ion-list>
-    <br><div style="text-align:center"> Notes ({{notes.length}})</div><br>
-    <div class="item item-text-wrap" ng-repeat="note in notes">
-      <h4>{{note.title}}</h4>
-      <span class="desc">{{note.desc}}</span>
-    </div>
+  	<div class="container">
+
+	  	<h1>{{project.title}}</h1>
+	    <h2>{{project.desc}}</h2>
+		<div class="seperator">Tasks ({{tasks.length}})</div>
+	    <!-- tasks -->
+	    <ion-list>
+	      	<ion-item ng-repeat="task in tasks" href="#/app/projects/{{project.id}}/tasks/{{task.id}}">
+				<h2>{{task.title}}</h2>
+				<h5 ng-show="task.deadline">Deadline: {{task.deadline.toLocaleString()}}</h5>
+				<h5 ng-show="!task.deadline">Unscheduled task. Add a deadline?</h5>
+				<h3>{{task.desc}}</h3>
+	      	</ion-item>
+	    </ion-list>
+	    <div class="center padding"><button class="button button-balanced button-small" ng-click="openNTModal()">Add new task</button></div>
+	    <!-- notes -->
+	    <div class="seperator">Notes ({{notes.length}})</div>
+	    <ion-list>
+	      	<ion-item ng-repeat="note in notes" href="#/app/404">
+				<h2>{{note.title}}</h2>
+				<h3>{{note.desc}}</h3>
+	      	</ion-item>
+	    </ion-list>
+		<div class="center padding"><button class="button button-balanced button-small" ng-click="openNNModal()">Add new note</button></div>
+  	</div>
 
   </ion-content>
 </ion-view>

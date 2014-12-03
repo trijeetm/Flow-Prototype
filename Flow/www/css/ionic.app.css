@@ -7842,10 +7842,19 @@ a {
   color: #9dc02e !important; }
 
 .padding, .container, .underConstruction {
-  padding: 24px !important; }
+  padding: 24px !important;
+  padding-top: 12px !important; }
 
 .margin {
   margin: 24px !important; }
+
+.seperator {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #666666; }
 
 .viewTitle {
   font-size: 18px;
@@ -7882,3 +7891,6 @@ textarea {
     color: #9b9b9b;
     font-weight: 200;
     margin-top: 12px; }
+
+.center {
+  text-align: center; }

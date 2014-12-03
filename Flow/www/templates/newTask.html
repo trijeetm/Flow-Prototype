@@ -1,0 +1,32 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title">Add New Task</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeNTModal()">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="addNewTask()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Title</span>
+          <input type="text" ng-model="NTData.title">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Description</span>
+          <input type="text" ng-model="NTData.desc">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Date</span>
+            <input type = "date" ng-model="NTData.deadlineDate"></input>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Time</span>
+            <input type = "time" ng-model="NTData.deadlineTime"></input>
+        </label>
+        <button class="button button-full button-positive" type="submit">Create new task</button>
+      </div>
+    </form>
+  </ion-content>
+</div>
+

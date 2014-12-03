@@ -221,6 +221,7 @@ angular.module('starter.services', [])
 		insert: function (project) {
 			var deferred = $q.defer();
 
+			project.id = store.projects.length + 1;
 			store.projects.push(project);
 
 			store._saveToLocalStorage(store.projects);
