@@ -1,6 +1,6 @@
 var Flow = angular.module('starter.controllers', [])
 
-Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location, projects) {
+Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location, projects, tasklist) {
   // Form data for the login modal
   $scope.AIData = {};
 
@@ -43,6 +43,13 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   // WoZ Projects
   projects.insert({ title: 'Project1', desc: 'Desc1', id: 1 });
   projects.insert({ title: 'Project2', desc: 'Desc2', id: 2 });
+
+  // WoZ Tasklist
+  tasklist.insert({ projectId: 1, title: 'Task 1', desc: 'This is complicated task.' });
+  tasklist.insert({ projectId: 1, title: 'Task 2', desc: 'This is complicated task.' });
+  tasklist.insert({ projectId: 1, title: 'Task 3', desc: 'This is complicated task.' });
+  tasklist.insert({ projectId: 2, title: 'Task 4', desc: 'This is complicated task.' });
+  tasklist.insert({ projectId: 2, title: 'Task 5', desc: 'This is complicated task.' });
 })
 
 Flow.controller('PlaylistsCtrl', function($scope, $rootScope) {
@@ -86,9 +93,13 @@ Flow.controller('ProjectsCtrl', function($scope, projects) {
   $scope.projects = projects.projects;
 })
 
-Flow.controller('ProjectCtrl', function($scope, projects) {
+Flow.controller('ProjectCtrl', function($scope, projects, tasklist) {
   $scope.id = 1;
   $scope.project = projects.projects[$scope.id];
+
+  $scope.tasks = tasklist.tasks;
+
+  console.log($scope.tasks);
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {

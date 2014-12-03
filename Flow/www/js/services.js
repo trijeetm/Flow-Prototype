@@ -60,6 +60,66 @@ angular.module('starter.services', [])
 	return store;
 })
 
+.factory('tasklist', function ($q) {
+	var STORAGE_ID = 'tasklist-angularjs';
+
+	var store = {
+		tasks: [],
+
+		_getFromLocalStorage: function () {
+			return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+		},
+
+		_saveToLocalStorage: function (tasks) {
+			localStorage.setItem(STORAGE_ID, JSON.stringify(tasks));
+		},
+
+		delete: function (task) {
+			var deferred = $q.defer();
+
+			store.tasks.splice(store.tasks.indexOf(task), 1);
+
+			store._saveToLocalStorage(store.tasks);
+			deferred.resolve(store.tasks);
+
+			return deferred.promise;
+		},
+
+		get: function () {
+			var deferred = $q.defer();
+
+			angular.copy(store._getFromLocalStorage(), store.tasks);
+			deferred.resolve(store.tasks);
+
+			return deferred.promise;
+		},
+
+		insert: function (task) {
+			var deferred = $q.defer();
+
+			store.tasks.push(task);
+
+			store._saveToLocalStorage(store.tasks);
+			deferred.resolve(store.tasks);
+
+			return deferred.promise;
+		},
+
+		put: function (task, index) {
+			var deferred = $q.defer();
+
+			store.tasks[index] = idea;
+
+			store._saveToLocalStorage(store.tasks);
+			deferred.resolve(store.tasks);
+
+			return deferred.promise;
+		}
+	};
+
+	return store;
+})
+
 .factory('projects', function ($q) {
 	var STORAGE_ID = 'projects-angularjs';
 
