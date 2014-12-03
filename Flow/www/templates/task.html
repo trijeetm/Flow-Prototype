@@ -1,4 +1,4 @@
-<ion-view title="Flow">
+<ion-view title="Edit '{{task.title}}'">
 	<!-- menu -->
 	<ion-nav-buttons side="left">
 	  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
@@ -9,9 +9,52 @@
 	</ion-nav-buttons>
   <ion-content class="has-header">
   	<!-- Add content here -->
-  	<div class="container">
+  	<!-- <div class="container">
   		<h1 class="viewTitle">{{task.title}}</h1>
   		<div class="desc">{{task.desc}}</div>
-  	</div>
+  		<div class="desc">{{task.deadlineStr}}</div>
+  	</div> -->
+
+  	<form ng-submit="">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="task.title">
+        </label>
+        <label class="item" ng-show="task.deadline">
+        	{{task.deadline.toLocaleString()}}
+
+        	<button class="button button-small button-assertive" ng-click="editDeadline()">
+        	  	{{deadlineBtnMsg}}
+        	</button>
+        </label>
+        <label class="item" ng-show="!task.deadline">
+        	<button class="button button-small button-assertive" ng-click="editDeadline()">
+        	  	{{deadlineBtnMsg}}
+        	</button>
+        </label>
+        <div ng-show="showEditDeadline">
+	        <label class="item item-input">
+	        	<span class="input-label">Date</span>
+	          	<input type = "date" ng-model="task.newDeadlineDate"></input>
+	        </label>
+	        <label class="item item-input">
+	        	<span class="input-label">Time</span>
+	          	<input type = "time" ng-model="task.newDeadlineTime"></input>
+	        </label>
+
+	        <!-- {{task.newDeadlineDate}} -->
+	        <!-- {{task.newDeadlineTime}} -->
+        </div>
+        <label class="item item-input">
+          <textarea placeholder="Description" ng-model="task.desc"></textarea>
+        </label>
+
+
+
+
+        <button class="button button-block button-stable button-primary" type="submit">Save Changes</button>
+
+      </div>
+    </form>
   </ion-content>
 </ion-view>

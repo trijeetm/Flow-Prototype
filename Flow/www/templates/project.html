@@ -11,15 +11,13 @@
   	<!-- Add content here -->
   	<h1 style="text-align:center">{{project.title}}</h1>
     <h2 style="text-align:center">{{project.desc}}</h2>
-    <br><div style="text-align:center"> Upcoming Deadlines ({{tasks.length}})</div><br>
+    <br><div style="text-align:center"> Tasks ({{tasks.length}})</div><br>
     <ion-list>
-      <ion-item ng-repeat="task in tasks">
-        <a href="/#/app/projects/{{project.id}}/tasks/{{task.id}}"> 
-          <h2>{{task.id}}. {{task.title}}</h2>
-          <h5>{{task.deadlineStr}}</h5>
-          <h3>{{task.desc}}</h3>
-        </a>
-      </ion-item>
+      	<ion-item ng-repeat="task in tasks" href="#/app/projects/{{project.id}}/tasks/{{task.id}}">
+			<h2>{{task.id}}. {{task.title}}</h2>
+			<h5>{{task.deadlineStr}}</h5>
+			<h3>{{task.desc}}</h3>
+      	</ion-item>
     </ion-list>
     <br><div style="text-align:center"> Notes ({{notes.length}})</div><br>
     <div class="item item-text-wrap" ng-repeat="note in notes">

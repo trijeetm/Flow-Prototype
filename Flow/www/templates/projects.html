@@ -10,11 +10,9 @@
   <ion-content class="has-header">
   	<!-- Add content here -->
   	<ion-list>
-      <ion-item ng-repeat="project in projects">
-        <a href="/#/app/projects/{{project.id}}">      
-          <h1>{{project.id}}. {{project.title}}</h1>
-          <h3>{{project.desc}}</h3>
-        </a>
+      <ion-item ng-repeat="project in projects" href="#/app/projects/{{project.id}}">
+        <h1>{{project.id}}. {{project.title}}</h1>
+        <h3>{{project.desc}}</h3>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -124,11 +124,11 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
   for (var i = 0; i < _tasks.length; i++) {
     console.log(_tasks[i].deadline);
     if (_tasks[i].deadline === null) {
-      _tasks[i].deadlineStr = 'Schedule task';
+      _tasks[i].deadlineStr = 'Unscheduled task. Add a deadline?';
     }
     else {
       if (typeof _tasks[i].deadline != 'string') {
-        _tasks[i].deadlineStr = _tasks[i].deadline.getDate() + "." + _tasks[i].deadline.getMonth() + "." + _tasks[i].deadline.getFullYear();     
+        _tasks[i].deadlineStr = "Deadline: " + _tasks[i].deadline.toDateString() + " " + _tasks[i].deadline.toLocaleTimeString();   
       };
     };
   };
@@ -155,18 +155,50 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location) {
   }
 
   $scope.task = findTaskById(taskId);
-
-  console.log('deadline:', $scope.task.deadline);
+ 
   if ($scope.task.deadline === null) {
-    $scope.task.deadlineStr = 'Schedule task';
+    var date = new Date();
+    $scope.task.newDeadlineDate = date;
+    $scope.task.newDeadlineTime = date;
+    // console.log($scope.task.newDeadlineDate);
+    // console.log($scope.task.newDeadlineTime);
   }
   else {
-    if (typeof $scope.task.deadline != 'string') {
-      $scope.task.deadlineStr = $scope.task.deadline.getDate() + "." + $scope.task.deadline.getMonth() + "." + $scope.task.deadline.getFullYear();     
-    };
+    $scope.task.newDeadlineDate = $scope.task.deadline;
+    $scope.task.newDeadlineTime = $scope.task.deadline;
   };
 
-  console.log($scope.task);
+  // deadlineStr
+  console.log('deadline:', $scope.task.deadline);
+  if ($scope.task.deadline === null) {
+    $scope.deadlineBtnMsg = 'Add deadline';
+  }
+  else {
+    $scope.deadlineBtnMsg = 'Edit deadline';
+  };
+
+  console.log('task: ', $scope.task);
+
+  $scope.showEditDeadline = false;
+
+  $scope.editDeadline = function() {
+    $scope.showEditDeadline = !$scope.showEditDeadline;
+    if ($scope.showEditDeadline) {
+      $scope.deadlineBtnMsg = 'Save deadline';
+    } else {
+      // console.log('deadline: ', $scope.task.deadline);
+      if ($scope.deadline) {
+        $scope.deadlineBtnMsg = 'Add deadline';
+      } else {
+        $scope.deadlineBtnMsg = 'Edit deadline';
+      };
+      // if (($scope.task.newDeadlineDate != null) && ($scope.task.newDeadlineTime != null)) {
+      //   console.log($scope.task.newDeadlineDate + " " + $scope.task.newDeadlineTime);
+      //   $scope.task.deadline = new Date($scope.task.newDeadlineDate.toDateString() + " " + $scope.task.newDeadlineTime.toTimeString());
+      // };
+      $scope.task.deadline = new Date();
+    };
+  }
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
