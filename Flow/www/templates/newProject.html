@@ -7,10 +7,27 @@
   <ion-nav-buttons side="right">
     <button class="button button-icon energized-button icon ion-ios7-lightbulb" ng-click="openAIModal()"></button>
   </ion-nav-buttons>
-  <ion-content class="has-header">
 
+  <ion-content class="has-header">
+    <h1 class="viewTitle">Create New Project</h1>
+    
+    <form ng-submit="">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" placeholder="New Project Title">
+        </label>
+        <label class="item item-input">
+          <textarea placeholder="Description"></textarea>
+        </label>
+        <!-- <label class="item"> -->
+          <button class="button button-block button-positive button-bottom" type="submit">Create Project</button>
+        <!-- </label> -->
+      </div>
+    </form>
+<!-- 
     <div class="newproject">
       <h1>New Project</h1>
+<<<<<<< HEAD
       <label class="item item-input item-select">
         <div class="input-label">Select Project Category...</div>
           <select> 
@@ -19,6 +36,14 @@
             <option value="value3">Ken</option>
           </select>
         </label>
+=======
+      <select>
+        <option value="default">Select Project Category...</option>
+        <option value="value1">Genie</option>
+        <option value="value2">Trijeet</option>
+        <option value="value3">Ken</option>
+      </select>
+>>>>>>> 24beb2dfea05842a7b72d501b1c22a2feefff1ff
 
 
       <div class="list">
@@ -36,6 +61,10 @@
         <br>Description: <input type="text" maxlength="500"><br>
         <input type="submit" class="newproject" value="Create New Project">
       </form>
+<<<<<<< HEAD
     </div>-->
+=======
+    </div> -->
+>>>>>>> 24beb2dfea05842a7b72d501b1c22a2feefff1ff
   </ion-content>
 </ion-view>
