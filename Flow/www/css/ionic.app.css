@@ -7844,6 +7844,9 @@ a {
 .padding, .viewTitle {
   padding: 24px !important; }
 
+.margin {
+  margin: 24px !important; }
+
 .viewTitle {
   font-size: 18px;
   font-weight: 800;
@@ -7856,3 +7859,6 @@ textarea {
   position: absolute;
   margin-bottom: 12px;
   z-index: 11; }
+
+.button-primary {
+  margin-top: 48px !important; }

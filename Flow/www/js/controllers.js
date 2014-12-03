@@ -71,8 +71,19 @@ Flow.controller('HomeCtrl', function($scope) {
 
 })
 
-Flow.controller('NewProjectCtrl', function($scope) {
-  
+Flow.controller('NewProjectCtrl', function($scope, $timeout, $location) {
+  $scope.newProjectData = {};
+
+  $scope.createNewProject = function () {
+    console.log($scope.newProjectData)
+    $timeout(function () {
+      $location.path('/app/projects');
+    }, 100);
+  }
+})
+
+Flow.controller('ProjectsCtrl', function($scope) {
+
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
