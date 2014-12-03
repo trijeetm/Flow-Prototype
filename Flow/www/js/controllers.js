@@ -45,11 +45,11 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   projects.insert({ title: 'Project2', desc: 'Desc2', id: 2 });
 
   // WoZ Tasklist
-  tasklist.insert({ projectId: 1, title: 'Task 1', desc: 'This is complicated task.' });
-  tasklist.insert({ projectId: 1, title: 'Task 2', desc: 'This is complicated task.' });
-  tasklist.insert({ projectId: 1, title: 'Task 3', desc: 'This is complicated task.' });
-  tasklist.insert({ projectId: 2, title: 'Task 4', desc: 'This is complicated task.' });
-  tasklist.insert({ projectId: 2, title: 'Task 5', desc: 'This is complicated task.' });
+  tasklist.insert({ projectId: 1, title: 'Task 1', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00') });
+  tasklist.insert({ projectId: 1, title: 'Task 2', desc: 'This is complicated task.', deadline: null });
+  tasklist.insert({ projectId: 1, title: 'Task 3', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00') });
+  tasklist.insert({ projectId: 2, title: 'Task 4', desc: 'This is complicated task.', deadline: null });
+  tasklist.insert({ projectId: 2, title: 'Task 5', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00') });
 
   // WoZ notelist
   notelist.insert({ projectId: 1, title: 'Note 1', desc: 'This is inspiring note.' });
@@ -101,6 +101,7 @@ Flow.controller('ProjectsCtrl', function($scope, projects) {
 })
 
 Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $location) {
+  // data init
   $scope.id = $location.$$url.substring(
     '/app/projects/'.length, $location.$$url.length
   );
@@ -120,11 +121,22 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
     return filteredList;
   };
 
-  $scope.tasks = filterListByProjectId(tasklist.tasks, $scope.id);
+  var _tasks = filterListByProjectId(tasklist.tasks, $scope.id);
+  for (var i = 0; i < _tasks.length; i++) {
+    if (_tasks[i].deadline == null) {
+      _tasks[i].deadline = 'Schedule task';
+    }
+    else {
+      _tasks[i].deadline = _tasks[i].deadline.getDate() + "." + _tasks[i].deadline.getMonth() + "." + _tasks[i].deadline.getFullYear(); 
+    };
+  };
+  $scope.tasks = _tasks;
   $scope.notes = filterListByProjectId(notelist.notes, $scope.id);
 
   console.log('tasks:', $scope.tasks);
   console.log('notes:',$scope.notes);
+
+  // modals
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
