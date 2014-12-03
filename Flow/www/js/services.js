@@ -108,10 +108,70 @@ angular.module('starter.services', [])
 		put: function (task, index) {
 			var deferred = $q.defer();
 
-			store.tasks[index] = idea;
+			store.tasks[index] = task;
 
 			store._saveToLocalStorage(store.tasks);
 			deferred.resolve(store.tasks);
+
+			return deferred.promise;
+		}
+	};
+
+	return store;
+})
+
+.factory('notelist', function ($q) {
+	var STORAGE_ID = 'notelist-angularjs';
+
+	var store = {
+		notes: [],
+
+		_getFromLocalStorage: function () {
+			return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+		},
+
+		_saveToLocalStorage: function (notes) {
+			localStorage.setItem(STORAGE_ID, JSON.stringify(notes));
+		},
+
+		delete: function (item) {
+			var deferred = $q.defer();
+
+			store.notes.splice(store.notes.indexOf(item), 1);
+
+			store._saveToLocalStorage(store.notes);
+			deferred.resolve(store.notes);
+
+			return deferred.promise;
+		},
+
+		get: function () {
+			var deferred = $q.defer();
+
+			angular.copy(store._getFromLocalStorage(), store.notes);
+			deferred.resolve(store.notes);
+
+			return deferred.promise;
+		},
+
+		insert: function (item) {
+			var deferred = $q.defer();
+
+			store.notes.push(item);
+
+			store._saveToLocalStorage(store.notes);
+			deferred.resolve(store.notes);
+
+			return deferred.promise;
+		},
+
+		put: function (item, index) {
+			var deferred = $q.defer();
+
+			store.notes[index] = item;
+
+			store._saveToLocalStorage(store.notes);
+			deferred.resolve(store.notes);
 
 			return deferred.promise;
 		}
