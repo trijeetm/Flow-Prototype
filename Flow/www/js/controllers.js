@@ -1,6 +1,6 @@
 var Flow = angular.module('starter.controllers', [])
 
-Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location) {
+Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location, projects) {
   // Form data for the login modal
   $scope.AIData = {};
 
@@ -39,6 +39,10 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   // WoZ for ideaboard
   $scope.addInspiration({ title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth" });
   $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale" });
+
+  // WoZ Projects
+  projects.insert({ title: 'Project1', desc: 'Desc1', id: 1 });
+  projects.insert({ title: 'Project2', desc: 'Desc2', id: 2 });
 })
 
 Flow.controller('PlaylistsCtrl', function($scope, $rootScope) {
@@ -67,7 +71,10 @@ Flow.controller('NewProjectCtrl', function($scope, $timeout, $location, projects
 
   $scope.createNewProject = function () {
     console.log($scope.newProjectData);
-    projects.insert($scope.newProjectData);
+    console.log(projects.projects.length);
+    project = $scope.newProjectData;
+    project.id = projects.projects.length + 1;
+    projects.insert(project);
     $timeout(function () {
       $location.path('/app/projects');
     }, 100);
@@ -75,8 +82,13 @@ Flow.controller('NewProjectCtrl', function($scope, $timeout, $location, projects
 })
 
 Flow.controller('ProjectsCtrl', function($scope, projects) {
-  console.log(projects.projects)
+  console.log(projects.projects);
   $scope.projects = projects.projects;
+})
+
+Flow.controller('ProjectCtrl', function($scope, projects) {
+  $scope.id = 1;
+  $scope.project = projects.projects[$scope.id];
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {

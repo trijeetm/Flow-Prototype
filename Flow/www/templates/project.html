@@ -1,4 +1,4 @@
-<ion-view title="Browse Projects">
+<ion-view title="{{project.title}}">
 	<!-- menu -->
 	<ion-nav-buttons side="left">
 	  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
@@ -9,11 +9,6 @@
 	</ion-nav-buttons>
   <ion-content class="has-header">
   	<!-- Add content here -->
-  	<ion-list>
-      <ion-item ng-repeat="project in projects">
-        <h1>{{project.id}}. {{project.title}}</h1>
-        <h3>{{project.desc}}</h3>
-      </ion-item>
-    </ion-list>
+  	
   </ion-content>
 </ion-view>
