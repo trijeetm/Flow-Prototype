@@ -70,6 +70,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('app.project', {
+      url: "/projects/:projectID",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/project.html",
+          controller: 'ProjectCtrl'
+        }
+      }
+    })
+
     .state('app.search', {
       url: "/search",
       views: {
