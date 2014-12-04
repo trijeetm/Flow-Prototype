@@ -9,11 +9,24 @@
 	</ion-nav-buttons>
   <ion-content class="has-header">
   	<!-- Add content here -->
-  	<ion-list>
-      <ion-item ng-repeat="project in projects" href="#/app/projects/{{project.id}}">
-        <h1>{{project.id}}. {{project.title}}</h1>
-        <h3>{{project.desc}}</h3>
-      </ion-item>
-    </ion-list>
+    <div class="container">
+      <!-- <ion-list> -->
+        <!-- <ion-item ng-repeat="project in projects" href="#/app/projects/{{project.id}}">
+          <h1>{{project.id}}. {{project.title}}</h1>
+          <h3>{{project.desc}}</h3>
+        </ion-item> -->
+        <div class="list card cover" ng-repeat="project in projects">
+          <a href="#/app/projects/{{project.id}}">
+            <div class="coverData">
+              <h1>{{project.title}}</h1>
+              <h2>{{project.desc}}</h2>
+            </div>
+            <div class="item item-image">
+                <img src="img/{{project.cover}}.png">
+            </div>
+          </a>
+        </div>
+      <!-- </ion-list> -->
+    </div>
   </ion-content>
 </ion-view>

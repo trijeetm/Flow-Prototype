@@ -7894,3 +7894,28 @@ textarea {
 
 .center {
   text-align: center; }
+
+.cover {
+  background: #f2f2f2;
+  box-shadow: none;
+  height: 132px; }
+  .cover .coverData {
+    padding: 12px !important;
+    position: absolute;
+    z-index: 10000; }
+    .cover .coverData * {
+      color: #f2f2f2; }
+    .cover .coverData h1 {
+      font-size: 24px;
+      font-weight: 700; }
+    .cover .coverData h2 {
+      font-size: 18px;
+      font-weight: 200; }
+
+.cover.card {
+  margin: 0;
+  margin-bottom: 6px; }
+
+.whitespace {
+  display: block;
+  height: 18px; }

@@ -160,3 +160,40 @@ textarea {
 .center {
 	text-align: center;
 }
+
+.cover {
+	background: $light;
+	box-shadow: none;
+	height: 22 * $base-font-size;
+
+	.coverData {
+		padding: 2 * $base-font-size !important;
+
+		position: absolute;
+		z-index: 10000;
+
+		* {
+			color: $light 
+		}
+
+		h1 {
+			font-size: 4 * $base-font-size;
+			font-weight: 700;
+		}
+
+		h2 {
+			font-size: 3 * $base-font-size;
+			font-weight: 200;
+		}
+	}
+}
+
+.cover.card {
+	margin: 0;
+	margin-bottom: 1 * $base-font-size;
+}
+
+.whitespace {
+	display: block;
+	height: 3 * $base-font-size;
+}

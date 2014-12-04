@@ -47,9 +47,9 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale" });
 
   // WoZ Projects
-  projects.insert({ title: 'Project1', desc: 'Desc1' });
-  projects.insert({ title: 'Project2', desc: 'Desc2' });
-  projects.insert({ title: 'Project3', desc: 'Desc3' });
+  projects.insert({ title: 'Project1', desc: 'Desc1', cover: 'pc1' });
+  projects.insert({ title: 'Project2', desc: 'Desc2', cover: 'pc2' });
+  projects.insert({ title: 'Project3', desc: 'Desc3', cover: 'pc3' });
 
   // WoZ Tasklist
   tasklist.insert({ projectId: 1, title: 'Task 1', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00') });
@@ -83,8 +83,9 @@ Flow.controller('PlaylistsCtrl', function($scope, $rootScope) {
 Flow.controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-Flow.controller('HomeCtrl', function($scope) {
-
+Flow.controller('HomeCtrl', function($scope, projects, ideaboard) {
+  $scope.projects = projects.projects;
+  $scope.ideaboard = ideaboard.ideas;
 })
 
 Flow.controller('NewProjectCtrl', function($scope, $timeout, $location, projects) {
@@ -94,6 +95,8 @@ Flow.controller('NewProjectCtrl', function($scope, $timeout, $location, projects
     console.log($scope.newProjectData);
     console.log(projects.projects.length);
     project = $scope.newProjectData;
+    var imgId = Math.floor(Math.random() * 3) + 1;
+    project.cover = "pc" + imgId;
     projects.insert(project);
     $timeout(function () {
       $location.path('/app/projects');
