@@ -37,6 +37,7 @@ angular.module('starter.services', [])
 		insert: function (idea) {
 			var deferred = $q.defer();
 
+			idea.id = store.ideas.length + 1;
 			store.ideas.push(idea);
 
 			store._saveToLocalStorage(store.ideas);

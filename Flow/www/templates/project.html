@@ -11,6 +11,8 @@
   	<!-- Add content here -->
   	<div class="container">
 
+  		<div class="whitespace"></div>
+
   		<div class="list card cover">
   			<div class="coverData">
 			  	<h1>{{project.title}}</h1>
@@ -20,27 +22,49 @@
 	  		  	<img src="img/{{project.cover}}.png">
   			</div>
   		</div>
+
   		<div class="whitespace"></div>
+
 		<div class="seperator">Tasks ({{tasks.length}})</div>
+
 	    <!-- tasks -->
+		<div ng-show="tasks.length === 0 || !tasks">
+  		  <div class="heading">No tasks yet.</div>
+  		  <div class="text">Break your projects down into more smaller tasks and schedule them.</div>
+  		</div>
+
 	    <ion-list class="list-items">
 	      	<ion-item ng-repeat="task in tasks" href="#/app/projects/{{project.id}}/tasks/{{task.id}}" class="list-item">
-				<h2>{{task.title}}</h2>
-				<h5 ng-show="task.deadline">Deadline: {{task.deadline.toLocaleString()}}</h5>
-				<h5 ng-show="!task.deadline">Unscheduled task. Add a deadline?</h5>
-				<h3>{{task.desc}}</h3>
+				<div class="heading">{{task.title}}</div>
+				<div class="text">{{task.desc}}</div>
+				<div class="text deadline-text" ng-show="task.deadline">
+					<i class="icon ion-alert assertive"></i>
+					Deadline: {{task.deadline.toLocaleString()}}
+				</div>
+				<div class="text deadline-text" ng-show="!task.deadline">
+					<i class="icon ion-alert calm"></i>
+					Unscheduled task. Add a deadline?
+				</div>
 	      	</ion-item>
 	    </ion-list>
 	    <div class="center">
 	    	<button class="button button-add button-small button-clear icon-left ion-ios7-plus-outline button-calm" ng-click="openNTModal()">Add tasks</button>
 	    </div>
-	    <!-- notes -->
+
 	    <div class="whitespace"></div>
+
+	    <!-- notes -->
 	    <div class="seperator">Notes ({{notes.length}})</div>
+
+	    <div ng-show="notes.length === 0 || !notes">
+  		  <div class="heading">No notes yet.</div>
+  		  <div class="text">Brainstorm about your project by adding notes.</div>
+  		</div>
+
 	    <ion-list class="list-items">
 	      	<ion-item ng-repeat="note in notes" href="#/app/404" class="list-item">
-				<h2>{{note.title}}</h2>
-				<h3>{{note.desc}}</h3>
+	      		<div class="heading">{{note.title}}</div>
+	      		<div class="text">{{note.desc}}</div>
 	      	</ion-item>
 	    </ion-list>
 		<div class="center">

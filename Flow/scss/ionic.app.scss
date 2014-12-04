@@ -29,6 +29,7 @@ $base-background-color:           #f2f2f2 !default;
 $button-stable-text:              $light !default;
 
 $idea-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1) !default;
+$footer-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -349,6 +350,7 @@ textarea {
 
 .bar-footer {
 	height: 14 * $base-font-size;
+	box-shadow: ($footer-shadow);
 }
 
 .button-action {
@@ -387,13 +389,36 @@ textarea {
 
 .heading {
 	font-weight: 500;
-	font-size: 2.5 * $base-font-size
+	font-size: 2.5 * $base-font-size;
+	line-height: 4 * $base-font-size;
+	vertical-align: top;
 }
 
 .text {
 	font-weight: 200;
 	font-size: 2 * $base-font-size;
 	line-height: 2 * 1.5 * $base-font-size;
+}
+
+.deadline-text {
+	font-weight: 400;
+	font-size: 1.5 * $base-font-size;
+
+	i {
+		font-size: 2 * $base-font-size;
+	}
+
+	i:after {
+		content: ' ';
+	}
+}
+
+.assertive {
+	color: $assertive;
+}
+
+.calm {
+	color: $calm;
 }
 
 .button-add:before {
@@ -426,4 +451,12 @@ textarea {
 		font-size: 2.5 * $base-font-size;
 		color: $flow-grey;
 	}
+}
+
+.item-content {
+	overflow: auto;
+	white-space: normal;
+	padding: 2 * $base-font-size !important;
+	padding-top: 1.2 * $base-font-size !important;
+	padding-bottom: 1.2 * $base-font-size !important;
 }

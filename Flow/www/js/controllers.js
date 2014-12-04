@@ -431,8 +431,50 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window, $ioni
   };
 })
 
-Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {
+Flow.controller('IdeaboardCtrl', function($scope, ideaboard, notelist, projects, $window, $ionicActionSheet, $location, $timeout) {
   $scope.ideaboard = ideaboard.ideas;
+  console.log($scope.ideaboard);
+
+  // idea actions 
+  $scope.showIdeaActions = function(idea) {
+    console.log(idea);
+    var getProjectTitles = function () {
+      titles = [];
+      for (var i = 0; i < projects.projects.length; i++) {
+        titles.push({ text: projects.projects[i].title });
+      };
+      return titles;
+    }
+    var pTitles = getProjectTitles();
+    console.log('Project Titles: ', pTitles);
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: pTitles,
+      destructiveText: 'Delete',
+      titleText: 'Add idea to existing project',
+      cancelText: 'Cancel',
+      cancel: function() {
+        hideSheet();
+      },
+      buttonClicked: function(index) {
+        var project = projects.projects[index];
+        console.log('Adding to project:', project.title);
+        var note = { projectId: project.id, title: idea.title, desc: idea.desc };
+        console.log(note);
+        notelist.insert(note);
+        $timeout(function () {
+          $location.path('/app/projects/' + project.id);
+        }, 200);
+        return true;
+      },
+      destructiveButtonClicked: function(index) {
+        console.log('deleting');
+        // TO DO: delete from ideaboard
+        $location.path('/app/404');
+        return true;
+      }
+    });
+  };
 })
 
 Flow.controller('404Ctrl', function($scope, $window) {

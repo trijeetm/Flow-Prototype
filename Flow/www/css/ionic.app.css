@@ -8017,7 +8017,8 @@ textarea {
   padding: 0; }
 
 .bar-footer {
-  height: 84px; }
+  height: 84px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
 
 .button-action, .button-action-done {
   text-align: center;
@@ -8043,12 +8044,28 @@ textarea {
 
 .heading {
   font-weight: 500;
-  font-size: 15px; }
+  font-size: 15px;
+  line-height: 24px;
+  vertical-align: top; }
 
 .text {
   font-weight: 200;
   font-size: 12px;
   line-height: 18px; }
+
+.deadline-text {
+  font-weight: 400;
+  font-size: 9px; }
+  .deadline-text i {
+    font-size: 12px; }
+  .deadline-text i:after {
+    content: ' '; }
+
+.assertive {
+  color: #ef473a; }
+
+.calm {
+  color: #666666; }
 
 .button-add:before {
   color: #9dc02e; }
@@ -8069,3 +8086,10 @@ textarea {
   .snapshot-list i {
     font-size: 15px;
     color: #666666; }
+
+.item-content {
+  overflow: auto;
+  white-space: normal;
+  padding: 12px !important;
+  padding-top: 7.2px !important;
+  padding-bottom: 7.2px !important; }
