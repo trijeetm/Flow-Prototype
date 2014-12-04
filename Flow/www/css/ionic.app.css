@@ -8097,7 +8097,7 @@ textarea {
 .button-navigate-back {
   z-index: 110000;
   height: 100vh;
-  width: 50vw;
+  width: 24px;
   position: absolute;
   border: none;
   opacity: 0;
