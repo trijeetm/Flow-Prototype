@@ -7,12 +7,12 @@
 	<ion-nav-buttons side="right">
 	  <button class="button button-icon energized-button icon ion-ios7-lightbulb" ng-click="openAIModal()"></button>
 	</ion-nav-buttons>
-	
+
   <ion-content class="has-header">
   	<!-- Add content here -->
   	<div class="container">
   		<div class="seperator">Current Projects</div>
-      	<!-- <ion-list> -->
+      	<div>
 	        <div class="card cover" ng-repeat="project in projects">
 	          <a href="#/app/projects/{{project.id}}">
 	            <div class="coverData">
@@ -24,19 +24,21 @@
 	            </div>
 	          </a>
 	        </div>
-      	<!-- </ion-list> -->
+      	</div>
 
       	<div class="whitespace"></div>
 
-      	<div class="ideaboard">
-		<div class="seperator">Ideaboard</div>
-  	  	<div class="item item-text-wrap idea" ng-repeat="idea in ideaboard">
-  	    	<h4>{{idea.title}}</h4>
-	      	<span class="desc">{{idea.desc}}</span>
-	      	<div class="center">
-	      		<img src="img/{{idea.cover}}.png">
-	      	</div>
-  	  	</div>
+      	<a href="#/app/ideaboard">
+	    	<div class="ideaboard">
+				<div class="seperator">Ideaboard</div>
+	  	  		<div class="item item-text-wrap idea" ng-repeat="idea in ideaboard">
+		  	    	<h4>{{idea.title}}</h4>
+			      	<span class="desc">{{idea.desc}}</span>
+			      	<div class="center">
+		      		<img src="img/{{idea.cover}}.png">
+		      	</div>
+	  	  	</div>
+      	</a>
   	</div>
     </div>
   </ion-content>

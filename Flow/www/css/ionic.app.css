@@ -8093,3 +8093,13 @@ textarea {
   padding: 12px !important;
   padding-top: 7.2px !important;
   padding-bottom: 7.2px !important; }
+
+.button-navigate-back {
+  z-index: 110000;
+  height: 100vh;
+  width: 50vw;
+  position: absolute;
+  border: none;
+  opacity: 0;
+  background: #000;
+  left: 0; }
