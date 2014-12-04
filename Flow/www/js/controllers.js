@@ -1,6 +1,9 @@
 var Flow = angular.module('starter.controllers', [])
 
 Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location, projects, tasklist, notelist) {
+  // To Do:
+  // replace WoZ data
+
   // Form data for the login modal
   $scope.AIData = {};
 
