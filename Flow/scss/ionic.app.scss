@@ -9,11 +9,11 @@ For example, you might change some of the default colors:
 // variable customization
 $light:                           #f2f2f2 !default;
 $stable:                          #051a37 !default;
-// $positive:                        #387ef5 !default;
-// $calm:                            #11c1f3 !default;
+$positive:                        #37465d !default;
+$calm:                            #666666 !default;
 // $balanced:                        #33cd5f !default;
 $energized:                       #9dc02e !default;
-// $assertive:                       #ef473a !default;
+$assertive:                       #ef473a !default;
 // $royal:                           #886aea !default;
 $dark:                            #222 !default;
 
@@ -23,6 +23,7 @@ $grey2: #b5b5b5;
 $grey3: #9b9b9b;
 $grey4: #555555;
 $flow-grey: #666666;
+$flow-text: #111111;
 
 $base-background-color:           #f2f2f2 !default;
 $button-stable-text:              $light !default;
@@ -79,6 +80,15 @@ a {
 	width: 100%;
 	margin: 0 auto;
 	margin-top: 3%;
+		
+	.item {
+		padding: 2 * $base-font-size;
+	}
+
+	img {
+		width: 100%;
+		margin-top: 2 * $base-font-size;
+	}
 }
 
 .energized-button {
@@ -166,6 +176,11 @@ textarea {
 	box-shadow: none;
 	height: 22 * $base-font-size;
 
+	.item-image img {
+		width: 100% !important;
+		height: 22 * $base-font-size !important;
+	}
+
 	.coverData {
 		padding: 2 * $base-font-size !important;
 
@@ -195,5 +210,199 @@ textarea {
 
 .whitespace {
 	display: block;
-	height: 3 * $base-font-size;
+	height: 2 * $base-font-size;
+}
+
+.flow-form {
+
+	button.button-primary {
+		margin-top: $base-font-size * 12 !important;
+	}
+
+	.button-clear {
+		padding: 0;
+		// padding-bottom: 150px;
+		float: right;
+	}
+
+	label.calendar {
+		margin-top: 0;
+	}
+
+	label {
+		border: none;
+		padding: 0;
+		margin-top: 2 * $base-font-size;
+
+		.input-label {
+			padding: 0;
+			font-size: 2 * $base-font-size;
+		}
+
+		img.coverImg {
+			width: 100%;
+		}
+
+		input {
+			font-size: 2 * $base-font-size;
+		}
+
+		.title  {
+			font-size: 4 * $base-font-size !important;
+			vertical-align: bottom;
+			padding: 0;
+			font-family: $font-family-bold-sans-serif;
+			font-weight: 700;
+		}
+
+		.title::-webkit-input-placeholder {
+		   color: $flow-text;
+		   position: relative;
+		   bottom: -$base-font-size;
+		}
+
+		.title:-moz-placeholder { /* Firefox 18- */
+		   color: $flow-text;  
+		   position: relative;
+		   bottom: -$base-font-size;
+		}
+
+		.title::-moz-placeholder {  /* Firefox 19+ */
+		   color: $flow-text;  
+		   position: relative;
+		   bottom: -$base-font-size;
+		}
+
+		.title:-ms-input-placeholder {  
+		   color: $flow-text;  
+		   position: relative;
+		   bottom: -$base-font-size;
+		}
+
+		.desc  {
+			font-size: 2.5 * $base-font-size !important;
+			vertical-align: bottom;
+			padding: 0;
+			font-family: $font-family-light-sans-serif;
+			font-weight: 200;
+		}
+
+		textarea.desc {
+			min-height: 9 * $base-font-size;
+		}
+
+		.desc::-webkit-input-placeholder {
+		   color: $flow-text;
+		   position: relative;
+		   bottom: -0.25 * $base-font-size;
+		}
+
+		.desc:-moz-placeholder { /* Firefox 18- */
+		   color: $flow-text;  
+		   position: relative;
+		   bottom: -0.25 * $base-font-size;
+		}
+
+		.desc::-moz-placeholder {  /* Firefox 19+ */
+		   color: $flow-text;  
+		   position: relative;
+		   bottom: -0.25 * $base-font-size;
+		}
+
+		.desc:-ms-input-placeholder {  
+		   color: $flow-text;  
+		   position: relative;
+		   bottom: -0.25 * $base-font-size;
+		}
+	}
+}
+
+.hero-button { 
+	text-align: center;
+
+	a {
+		color: $grey3;
+
+		i {
+			color: $energized;
+			font-size: $base-font-size * 20;
+		}
+	}
+}
+
+.list-items {
+
+	.list-item {
+		margin-bottom: $base-font-size;
+	}
+}
+
+.ion-alert {
+	color: $assertive;
+	font-size: 3 * $base-font-size;
+	line-height: 1px;
+}
+
+.row, .col {
+	padding: 0;
+}
+
+.bottom {
+	// position: absolute;
+}
+
+.button-action {
+	text-align: center;
+	width: 90%;
+	margin: 0 auto;
+	background: none;
+	border: none;
+	color: $positive;
+	margin-top: 5 * $base-font-size;
+	font-size: 8 * $base-font-size;
+
+	.button-text {
+		font-size: 2 * $base-font-size;
+		line-height: 2 * 1.5 * $base-font-size;
+	}
+
+	i {
+		font-size: 8 * $base-font-size !important;
+	}
+}
+
+.button-action-done {
+	@extend .button-action;
+	color: $grey3;
+
+	.button-text {
+		font-size: 2 * $base-font-size;
+		line-height: 2 * 1.5 * $base-font-size;
+	}
+
+	i {
+		font-size: 8 * $base-font-size !important;
+	}
+}
+
+.heading {
+	font-weight: 500;
+	font-size: 2.5 * $base-font-size
+}
+
+.text {
+	font-weight: 200;
+	font-size: 2 * $base-font-size;
+	line-height: 2 * 1.5 * $base-font-size;
+}
+
+.button-add:before {
+	color: $energized;
+}
+
+.comment-list {
+	
+	.comment {
+		margin-bottom: $base-font-size;
+	}
 }

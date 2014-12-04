@@ -9,18 +9,21 @@
   </ion-nav-buttons>
 
   <ion-content class="has-header">
-    <h1 class="viewTitle">Create New Project</h1>
+    <!-- <h1 class="viewTitle">Create New Project</h1> -->
     
-    <form ng-submit="createNewProject()">
+    <form ng-submit="createNewProject()" class="flow-form container">
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="New Project Title" ng-model="newProjectData.title">
+          <input type="text" placeholder="New Project Title" class="title" ng-model="newProjectData.title">
+        </label>
+        <label class="item item-input" ng-click="showSheet()">
+          <img src="img/addCover.png" class="coverImg">
         </label>
         <label class="item item-input">
-          <textarea placeholder="Description" ng-model="newProjectData.desc"></textarea>
+          <textarea placeholder="Add description" ng-model="newProjectData.desc" class="desc"></textarea>
         </label>
 
-        <button class="button button-block button-stable button-primary" type="submit">Create Project</button>
+        <button class="button button-block button-stable" type="submit">Create Project</button>
 
       </div>
     </form>

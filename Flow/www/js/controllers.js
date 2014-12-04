@@ -23,7 +23,9 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
 
   // Perform the login action when the user submits the login form
   $scope.addNewInspiration = function() {
-    console.log('Creating new inspiration', $scope.AIData);
+    console.log('Creating new inspiration', $scope.AIData); 
+    var imgId = Math.floor(Math.random() * 3) + 1;
+    $scope.AIData.cover = "idea" + imgId;
     $scope.addInspiration($scope.AIData);
     $scope.AIData = {};
     $timeout(function() {
@@ -43,8 +45,8 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   $scope.goBack = goBack;
 
   // WoZ for ideaboard
-  $scope.addInspiration({ title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth" });
-  $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale" });
+  $scope.addInspiration({ title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth", cover: "idea1" });
+  $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale", cover: "idea2" });
 
   // WoZ Projects
   projects.insert({ title: 'Project1', desc: 'Desc1', cover: 'pc1' });
@@ -52,11 +54,11 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   projects.insert({ title: 'Project3', desc: 'Desc3', cover: 'pc3' });
 
   // WoZ Tasklist
-  tasklist.insert({ projectId: 1, title: 'Task 1', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00') });
-  tasklist.insert({ projectId: 1, title: 'Task 2', desc: 'This is complicated task.', deadline: null });
-  tasklist.insert({ projectId: 1, title: 'Task 3', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00') });
-  tasklist.insert({ projectId: 2, title: 'Task 4', desc: 'This is complicated task.', deadline: null });
-  tasklist.insert({ projectId: 2, title: 'Task 5', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00') });
+  tasklist.insert({ projectId: 1, title: 'Task 1', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00'), completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
+  tasklist.insert({ projectId: 1, title: 'Task 2', desc: 'This is complicated task.', deadline: null, completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
+  tasklist.insert({ projectId: 1, title: 'Task 3', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00'), completed: false, comments: [] });
+  tasklist.insert({ projectId: 2, title: 'Task 4', desc: 'This is complicated task.', deadline: null, completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
+  tasklist.insert({ projectId: 2, title: 'Task 5', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00'), completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
 
   // WoZ notelist
   notelist.insert({ projectId: 1, title: 'Note 1', desc: 'This is inspiring note.' });
@@ -66,42 +68,63 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   notelist.insert({ projectId: 2, title: 'Note 5', desc: 'This is inspiring note.' });
 })
 
-Flow.controller('PlaylistsCtrl', function($scope, $rootScope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 },
-    { title: 'Trijeet', id: 7 },
-    { title: 'Genie', id: 8 }, 
-    { title: 'Ken', id: 9 }
-  ];
-})
-
-Flow.controller('PlaylistCtrl', function($scope, $stateParams) {
-})
-
 Flow.controller('HomeCtrl', function($scope, projects, ideaboard) {
   $scope.projects = projects.projects;
   $scope.ideaboard = ideaboard.ideas;
 })
 
-Flow.controller('NewProjectCtrl', function($scope, $timeout, $location, projects) {
+Flow.controller('NewProjectCtrl', function($scope, $timeout, $location, projects, $ionicActionSheet, $rootElement) {
   $scope.newProjectData = {};
 
+  var project = {};
+  var imgId = Math.floor(Math.random() * 3) + 1;
+
   $scope.createNewProject = function () {
-    console.log($scope.newProjectData);
-    console.log(projects.projects.length);
+    // console.log($scope.newProjectData);
+    // console.log(projects.projects.length);
     project = $scope.newProjectData;
-    var imgId = Math.floor(Math.random() * 3) + 1;
-    project.cover = "pc" + imgId;
+    if (!project.cover) {
+      project.cover = "pc" + imgId;
+    };
+    console.log(project);
     projects.insert(project);
     $timeout(function () {
       $location.path('/app/projects');
     }, 100);
-  }
+  };
+
+
+  // Triggered on a button click, or some other target
+  $scope.showSheet = function() {
+  // console.log('sanity');
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: [
+        { text: 'Choose From Library' },
+        { text: 'Capture New Media' }
+      ],
+      // destructiveText: 'Delete',
+      titleText: 'Add cover image',
+      cancelText: 'Cancel',
+      cancel: function() {
+        hideSheet();
+      },
+      buttonClicked: function(index) {
+        console.log('sanity');
+        project.cover = "pc" + imgId + ".png";
+        var img = $rootElement.find('img');
+        img[0].src = 'img/' + project.cover;
+        // console.log(img);
+        return true;
+      }
+    });
+
+   // For example's sake, hide the sheet after two seconds
+   // $timeout(function() {
+   //   hideSheet();
+   // }, 2000);
+
+  };
 })
 
 Flow.controller('ProjectsCtrl', function($scope, projects) {
@@ -256,7 +279,7 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window) {
     $scope.deadlineBtnMsg = 'Add deadline';
   }
   else {
-    $scope.deadlineBtnMsg = 'Edit deadline';
+    $scope.deadlineBtnMsg = '';
   };
 
   console.log('task: ', $scope.task);
@@ -266,13 +289,13 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window) {
   $scope.editDeadline = function() {
     $scope.showEditDeadline = !$scope.showEditDeadline;
     if ($scope.showEditDeadline) {
-      $scope.deadlineBtnMsg = 'Save deadline';
+      $scope.deadlineBtnMsg = 'Save';
     } else {
       // console.log('deadline: ', $scope.task.deadline);
       if ($scope.deadline) {
-        $scope.deadlineBtnMsg = 'Add deadline';
+        $scope.deadlineBtnMsg = 'Add';
       } else {
-        $scope.deadlineBtnMsg = 'Edit deadline';
+        $scope.deadlineBtnMsg = '';
       };
       // if (($scope.task.newDeadlineDate != null) && ($scope.task.newDeadlineTime != null)) {
       //   console.log($scope.task.newDeadlineDate + " " + $scope.task.newDeadlineTime);
@@ -280,7 +303,13 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window) {
       // };
       $scope.task.deadline = new Date();
     };
-  }
+  };
+
+  // complete task
+  $scope.toggleTaskComplete = function () {
+    $scope.task.completed = !$scope.task.completed;
+    console.log($scope.task.completed);
+  };
 })
 
 Flow.controller('IdeaboardCtrl', function($scope, ideaboard, $window) {

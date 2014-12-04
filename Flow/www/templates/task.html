@@ -15,45 +15,112 @@
   		<div class="desc">{{task.deadlineStr}}</div>
   	</div> -->
 
-  	<form ng-submit="saveNode()">
-      <div class="list">
-        <label class="item item-input">
-          <input type="text" ng-model="task.title">
-        </label>
-        <label class="item" ng-show="task.deadline">
-        	{{task.deadline.toLocaleString()}}
+  	<div class="container">
+      <form ng-submit="saveNode()" class="flow-form">
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" ng-model="task.title" class="title">
+          </label>
+          <label class="item item-input">
+            <textarea placeholder="Description" ng-model="task.desc" class="desc"></textarea>
+          </label>
+          
+          <div ng-show="!task.completed">
 
-        	<button class="button button-small button-assertive" ng-click="editDeadline()">
-        	  	{{deadlineBtnMsg}}
-        	</button>
-        </label>
-        <label class="item" ng-show="!task.deadline">
-        	<button class="button button-small button-assertive" ng-click="editDeadline()">
-        	  	{{deadlineBtnMsg}}
-        	</button>
-        </label>
-        <div ng-show="showEditDeadline">
-	        <label class="item item-input">
-	        	<span class="input-label">Date</span>
-	          	<input type = "date" ng-model="task.newDeadlineDate"></input>
-	        </label>
-	        <label class="item item-input">
-	        	<span class="input-label">Time</span>
-	          	<input type = "time" ng-model="task.newDeadlineTime"></input>
-	        </label>
+            <!-- deadline -->
+            <label class="item" ng-show="task.deadline">
+              <span class="desc">
+                <i class="icon ion-alert"></i>
+                Deadline: {{task.deadline.toLocaleString()}}
+              </span>
 
-	        <!-- {{task.newDeadlineDate}} -->
-	        <!-- {{task.newDeadlineTime}} -->
+              <button class="button icon ion-edit button-small button-clear" ng-click="editDeadline()">
+                  <!-- {{deadlineBtnMsg}} -->
+              </button>
+            </label>
+            <label class="item" ng-show="!task.deadline">
+              <button class="button button-small button-block button-assertive" ng-click="editDeadline()">
+                  {{deadlineBtnMsg}}
+              </button>
+            </label>
+            <div ng-show="showEditDeadline">
+              <label class="item item-input calendar">
+                <span class="input-label">Date</span>
+                  <input type = "date" class="desc" ng-model="task.newDeadlineDate"></input>
+              </label>
+              <label class="item item-input calendar">
+                <span class="input-label">Time</span>
+                  <input type = "time" class="desc" ng-model="task.newDeadlineTime"></input>
+              </label>
+            </div>
+
+          </div>
+
+          <div ng-show="task.completed">
+            <label class="item item-input">
+              <span class="desc">
+                <i class="icon ion-checkmark">&nbsp;&nbsp;</i>
+                This task has been completed
+              </span> 
+            </label>
+          </div>
+
         </div>
-        <label class="item item-input">
-          <textarea placeholder="Description" ng-model="task.desc"></textarea>
-        </label>
+      </form>
 
-        <button class="button button-block button-stable button-primary" ng-click="goBack()">
-            Save changes
-        </button>
+      <div class="whitespace"></div>
+
+      <div class="seperator">Comments</div>
+
+      <div ng-show="task.comments.length === 0 || !task.comments">
+        <div class="heading">No comments yet.</div>
+        <div class="text">Add snapshots and share to get feedback</div>
+      </div>
+
+      <div class="list comment-list">
+        <div class="comment text" ng-repeat="comment in task.comments">
+          <i class="icon ion-email"></i>
+          <span>
+            <b>{{comment.author}}</b>: 
+            {{comment.comment}}
+          </span>
+        </div>
 
       </div>
-    </form>
+
+
+      <div class="seperator">Snapshots</div>
+      <div class="center">
+        <button class="button button-add button-small button-clear icon-left ion-ios7-plus-outline button-calm" ng-click="">&nbsp;Add snapshots</button>
+      </div>
+      
+    </div>  
+
+
+    <div class="row bottom">
+      <div class="col">
+        <button class="button button-action" ng-click="goBack()">
+            <i class="icon ion-archive"></i>
+            <div class="button-text">Save Changes</div>
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-action" ng-click="goBack()">
+            <i class="icon ion-ios7-upload-outline"></i>
+            <div class="button-text">Share Snapshots</div>
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-action" ng-click="toggleTaskComplete()" ng-show="!task.completed">
+            <i class="icon ion-checkmark"></i>
+            <div class="button-text">Complete Task</div>
+        </button>
+        <button class="button button-action-done" ng-click="toggleTaskComplete()" ng-show="task.completed">
+            <i class="icon ion-checkmark"></i>
+            <div class="button-text">Mark as Incomplete</div>
+        </button>
+      </div>
+
+    </div>
   </ion-content>
 </ion-view>

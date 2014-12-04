@@ -20,26 +20,32 @@
 	  		  	<img src="img/{{project.cover}}.png">
   			</div>
   		</div>
+  		<div class="whitespace"></div>
 		<div class="seperator">Tasks ({{tasks.length}})</div>
 	    <!-- tasks -->
-	    <ion-list>
-	      	<ion-item ng-repeat="task in tasks" href="#/app/projects/{{project.id}}/tasks/{{task.id}}">
+	    <ion-list class="list-items">
+	      	<ion-item ng-repeat="task in tasks" href="#/app/projects/{{project.id}}/tasks/{{task.id}}" class="list-item">
 				<h2>{{task.title}}</h2>
 				<h5 ng-show="task.deadline">Deadline: {{task.deadline.toLocaleString()}}</h5>
 				<h5 ng-show="!task.deadline">Unscheduled task. Add a deadline?</h5>
 				<h3>{{task.desc}}</h3>
 	      	</ion-item>
 	    </ion-list>
-	    <div class="center padding"><button class="button button-balanced button-small" ng-click="openNTModal()">Add new task</button></div>
+	    <div class="center">
+	    	<button class="button button-add button-small button-clear icon-left ion-ios7-plus-outline button-calm" ng-click="openNTModal()">Add tasks</button>
+	    </div>
 	    <!-- notes -->
+	    <div class="whitespace"></div>
 	    <div class="seperator">Notes ({{notes.length}})</div>
-	    <ion-list>
-	      	<ion-item ng-repeat="note in notes" href="#/app/404">
+	    <ion-list class="list-items">
+	      	<ion-item ng-repeat="note in notes" href="#/app/404" class="list-item">
 				<h2>{{note.title}}</h2>
 				<h3>{{note.desc}}</h3>
 	      	</ion-item>
 	    </ion-list>
-		<div class="center padding"><button class="button button-balanced button-small" ng-click="openNNModal()">Add new note</button></div>
+		<div class="center">
+			<button class="button button-add button-small button-clear icon-left ion-ios7-plus-outline button-calm" ng-click="openNNModal()">Add note</button>
+		</div>
   	</div>
 
   </ion-content>

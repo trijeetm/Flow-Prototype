@@ -10,23 +10,30 @@
   <ion-content class="has-header">
   	<!-- Add content here -->
     <div class="container">
-      <!-- <ion-list> -->
-        <!-- <ion-item ng-repeat="project in projects" href="#/app/projects/{{project.id}}">
-          <h1>{{project.id}}. {{project.title}}</h1>
-          <h3>{{project.desc}}</h3>
-        </ion-item> -->
-        <div class="list card cover" ng-repeat="project in projects">
-          <a href="#/app/projects/{{project.id}}">
-            <div class="coverData">
-              <h1>{{project.title}}</h1>
-              <h2>{{project.desc}}</h2>
-            </div>
-            <div class="item item-image">
-                <img src="img/{{project.cover}}.png">
-            </div>
-          </a>
-        </div>
-      <!-- </ion-list> -->
+      <div class="hero-button">
+        <a href="#/app/newproject">
+          <i class="icon ion-ios7-plus-outline"></i>
+          <br>
+          Add new project
+        </a>
+      </div>   
+
+      <div class="whitespace"></div>
+
+      <div class="seperator">Current Projects</div>
+
+      <div class="list card cover" ng-repeat="project in projects.slice().reverse()">
+        <a href="#/app/projects/{{project.id}}">
+          <div class="coverData">
+            <h1>{{project.title}}</h1>
+            <h2>{{project.desc}}</h2>
+          </div>
+          <div class="item item-image">
+              <img src="img/{{project.cover}}.png">
+          </div>
+        </a>
+      </div>
+
     </div>
   </ion-content>
 </ion-view>
