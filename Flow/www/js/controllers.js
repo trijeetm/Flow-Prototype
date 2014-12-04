@@ -54,11 +54,56 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   projects.insert({ title: 'Project3', desc: 'Desc3', cover: 'pc3' });
 
   // WoZ Tasklist
-  tasklist.insert({ projectId: 1, title: 'Task 1', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00'), completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
-  tasklist.insert({ projectId: 1, title: 'Task 2', desc: 'This is complicated task.', deadline: null, completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
-  tasklist.insert({ projectId: 1, title: 'Task 3', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00'), completed: false, comments: [] });
-  tasklist.insert({ projectId: 2, title: 'Task 4', desc: 'This is complicated task.', deadline: null, completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
-  tasklist.insert({ projectId: 2, title: 'Task 5', desc: 'This is complicated task.', deadline: new Date('December 17, 1995 03:24:00'), completed: false, comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }] });
+  tasklist.insert({ 
+    projectId: 1, 
+    title: 'Task 1', 
+    desc: 'This is complicated task.', 
+    deadline: new Date('December 17, 1995 03:24:00'), 
+    completed: false, 
+    comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], snapshots: [{ title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
+  });
+  tasklist.insert({ 
+    projectId: 1, 
+    title: 'Task 2', 
+    desc: 'This is complicated task.', 
+    deadline: null, 
+    completed: false, 
+    comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], 
+    snapshots: [
+    { title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, 
+    { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
+  });
+  tasklist.insert({ 
+    projectId: 1, 
+    title: 'Task 3', 
+    desc: 'This is complicated task.', 
+    deadline: new Date('December 17, 1995 03:24:00'), 
+    completed: false, 
+    comments: [], 
+    snapshots: [
+    { title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, 
+    { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
+  });
+  tasklist.insert({ 
+    projectId: 2, 
+    title: 'Task 4', 
+    desc: 'This is complicated task.', 
+    deadline: null, 
+    completed: false, 
+    comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], 
+    snapshots: [] 
+  });
+  tasklist.insert({ 
+    projectId: 2, 
+    title: 'Task 5', 
+    desc: 'This is complicated task.', 
+    deadline: new Date('December 17, 1995 03:24:00'), 
+    completed: false, 
+    comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], 
+    snapshots: [
+    { title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, 
+    { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
+  });
 
   // WoZ notelist
   notelist.insert({ projectId: 1, title: 'Note 1', desc: 'This is inspiring note.' });
@@ -246,7 +291,7 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
 
 })
 
-Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window) {
+Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window, $ionicActionSheet) {
   var taskId = $location.$$url.substring(
     $location.$$url.search('/tasks/') + '/tasks/'.length, $location.$$url.length
   );
@@ -309,6 +354,31 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window) {
   $scope.toggleTaskComplete = function () {
     $scope.task.completed = !$scope.task.completed;
     console.log($scope.task.completed);
+  };
+
+  // add snapshot
+  $scope.addSnapshot = function() {
+  // console.log('sanity');
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: [
+        { text: 'Choose From Library' },
+        { text: 'Capture New Media' }
+      ],
+      // destructiveText: 'Delete',
+      titleText: 'Add snapshot',
+      cancelText: 'Cancel',
+      cancel: function() {
+        hideSheet();
+      },
+      buttonClicked: function(index) {
+        console.log('sanity');
+        $scope.task.snapshots.push(
+          { title: 'New Snapshot', desc: 'Look at this beautiful new snapshot', snap: 'snap1.png' }
+        );
+        return true;
+      }
+    });
   };
 })
 

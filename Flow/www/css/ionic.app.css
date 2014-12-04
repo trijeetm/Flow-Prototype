@@ -8016,6 +8016,9 @@ textarea {
 .row, .col {
   padding: 0; }
 
+.bar-footer {
+  height: 84px; }
+
 .button-action, .button-action-done {
   text-align: center;
   width: 90%;
@@ -8023,7 +8026,6 @@ textarea {
   background: none;
   border: none;
   color: #37465d;
-  margin-top: 30px;
   font-size: 48px; }
   .button-action .button-text, .button-action .button-action-done {
     font-size: 12px;
@@ -8053,3 +8055,17 @@ textarea {
 
 .comment-list .comment {
   margin-bottom: 6px; }
+.comment-list i {
+  font-size: 15px;
+  color: #666666; }
+
+.snapshot-list {
+  padding: 0; }
+  .snapshot-list .snapshot {
+    margin-bottom: 6px;
+    background: #fff;
+    overflow: auto;
+    white-space: normal; }
+  .snapshot-list i {
+    font-size: 15px;
+    color: #666666; }

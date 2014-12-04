@@ -347,8 +347,8 @@ textarea {
 	padding: 0;
 }
 
-.bottom {
-	// position: absolute;
+.bar-footer {
+	height: 14 * $base-font-size;
 }
 
 .button-action {
@@ -358,7 +358,7 @@ textarea {
 	background: none;
 	border: none;
 	color: $positive;
-	margin-top: 5 * $base-font-size;
+	// margin-top: 2 * $base-font-size;
 	font-size: 8 * $base-font-size;
 
 	.button-text {
@@ -404,5 +404,26 @@ textarea {
 	
 	.comment {
 		margin-bottom: $base-font-size;
+	}
+
+	i {
+		font-size: 2.5 * $base-font-size;
+		color: $flow-grey;
+	}
+}
+
+.snapshot-list {
+	padding: 0;
+
+	.snapshot {
+		margin-bottom: $base-font-size;
+		background: #fff;
+		overflow: auto;
+		white-space: normal;
+	}
+
+	i {
+		font-size: 2.5 * $base-font-size;
+		color: $flow-grey;
 	}
 }

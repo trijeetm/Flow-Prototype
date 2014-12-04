@@ -1,4 +1,4 @@
-<ion-view title="Edit '{{task.title}}'">
+<ion-view title="{{task.title}}">
 	<!-- menu -->
 	<ion-nav-buttons side="left">
 	  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
@@ -79,7 +79,7 @@
 
       <div class="list comment-list">
         <div class="comment text" ng-repeat="comment in task.comments">
-          <i class="icon ion-email"></i>
+          <i class="icon ion-person"></i>
           <span>
             <b>{{comment.author}}</b>: 
             {{comment.comment}}
@@ -90,14 +90,35 @@
 
 
       <div class="seperator">Snapshots</div>
-      <div class="center">
-        <button class="button button-add button-small button-clear icon-left ion-ios7-plus-outline button-calm" ng-click="">&nbsp;Add snapshots</button>
+
+      <div class="list snapshot-list">
+        <div class="snapshot text item item-thumbnail-left" ng-repeat="snapshot in task.snapshots">
+          <img src="{{snapshot.snap}}">
+          <span>
+            <b>{{snapshot.title}}</b>: 
+            {{snapshot.desc}}
+          </span>
+        </div>
+       
+        <div class="center">
+          <button class="button button-add button-small button-clear icon-left ion-ios7-plus-outline button-calm" ng-click="addSnapshot()">&nbsp;Add snapshots</button>
+        </div>
+
       </div>
+
+      <!-- account for footer space -->
+      <div class="whitespace"></div>
+      <div class="whitespace"></div>
+      <div class="whitespace"></div>
+      <div class="whitespace"></div>
       
     </div>  
 
 
-    <div class="row bottom">
+  </ion-content>
+
+  <div class="bar bar-footer">
+    <div class="row">
       <div class="col">
         <button class="button button-action" ng-click="goBack()">
             <i class="icon ion-archive"></i>
@@ -120,7 +141,7 @@
             <div class="button-text">Mark as Incomplete</div>
         </button>
       </div>
-
     </div>
-  </ion-content>
+  </div>
+
 </ion-view>
