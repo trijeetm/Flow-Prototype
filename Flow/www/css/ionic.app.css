@@ -7917,7 +7917,7 @@ textarea {
       font-size: 24px;
       font-weight: 700; }
     .cover .coverData h2 {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 200; }
 
 .cover.card {
@@ -8025,7 +8025,7 @@ textarea {
   margin: 0 auto;
   background: none;
   border: none;
-  color: #37465d;
+  color: #37465d !important;
   font-size: 48px; }
   .button-action .button-text, .button-action .button-action-done {
     font-size: 12px;
@@ -8034,7 +8034,7 @@ textarea {
     font-size: 48px !important; }
 
 .button-action-done {
-  color: #9b9b9b; }
+  color: #9b9b9b !important; }
   .button-action-done .button-text {
     font-size: 12px;
     line-height: 18px; }

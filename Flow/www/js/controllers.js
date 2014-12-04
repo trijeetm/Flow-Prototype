@@ -245,6 +245,8 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
       newTask.deadline = null;
     };
     newTask.projectId = $scope.projectId;
+    newTask.comments = [];
+    newTask.snapshots = [];
     console.log('Creating new task', newTask);
     tasklist.insert(newTask);
     $scope.tasks.push(newTask);
@@ -291,7 +293,7 @@ Flow.controller('ProjectCtrl', function($scope, projects, tasklist, notelist, $l
 
 })
 
-Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window, $ionicActionSheet) {
+Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window, $ionicActionSheet, $ionicPopup, $timeout) {
   var taskId = $location.$$url.substring(
     $location.$$url.search('/tasks/') + '/tasks/'.length, $location.$$url.length
   );
@@ -379,6 +381,53 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window, $ioni
         return true;
       }
     });
+  };
+
+  // share snapshots
+  $scope.shareSnapshots = function() {
+    if ($scope.task.snapshots.length === 0 || !$scope.task.snapshots) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'No snapshots added!',
+        template: 'Add some snapshots to share.'
+        });
+        alertPopup.then(function(res) {
+          console.log('Shared snapshots!');
+        }
+      );
+    } else {
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Share snapshots?',
+        template: 'Are you sure you want to share all your snapshots with your friends for feedback?'
+        });
+        confirmPopup.then(function(res) {
+        if(res) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Snapshots shared!',
+            template: 'Your snapshots of this task have been shared with your friends. Check the comments section later for feedback.'
+            });
+            alertPopup.then(function(res) {
+              console.log('Shared snapshots!');
+              $timeout(function () {
+                console.log('adding comments');
+                $scope.task.comments.push(
+                  { author: 'Harrison Wray', comment: 'The Flow team is doing amazing work. Love them.' }
+                );
+              }, 1200);
+              $timeout(function () {
+                console.log('adding comments');
+                $scope.task.comments.push(
+                  { author: 'James Landay', comment: 'Wow, these comments keep appearing magically.' }
+                );
+              }, 3200);
+            }
+          );
+          // console.log('You are sure');
+        } else {
+          console.log('Snapshots not shared');
+        }
+      });
+    };
+
   };
 })
 

@@ -197,7 +197,7 @@ textarea {
 		}
 
 		h2 {
-			font-size: 3 * $base-font-size;
+			font-size: 2.5 * $base-font-size;
 			font-weight: 200;
 		}
 	}
@@ -357,7 +357,7 @@ textarea {
 	margin: 0 auto;
 	background: none;
 	border: none;
-	color: $positive;
+	color: $positive !important;
 	// margin-top: 2 * $base-font-size;
 	font-size: 8 * $base-font-size;
 
@@ -373,7 +373,7 @@ textarea {
 
 .button-action-done {
 	@extend .button-action;
-	color: $grey3;
+	color: $grey3 !important;
 
 	.button-text {
 		font-size: 2 * $base-font-size;
