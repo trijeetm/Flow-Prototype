@@ -52,23 +52,23 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale", cover: "idea2" });
 
   // WoZ Projects
-  projects.insert({ title: 'Project1', desc: 'Desc1', cover: 'pc1' });
-  projects.insert({ title: 'Project2', desc: 'Desc2', cover: 'pc2' });
-  projects.insert({ title: 'Project3', desc: 'Desc3', cover: 'pc3' });
+  projects.insert({ title: 'Curtain Calls', desc: 'My very first attempt at playwrighting, about the struggles of a young girl attempting to break into the Broadway scene.', cover: 'pc1' });
+  projects.insert({ title: 'Winter Solstice', desc: 'An intricate piano piece seeking to capture the beauty of the seasonal change into Winter.', cover: 'pc2' });
+  projects.insert({ title: 'High Fidelity Prototype', desc: 'A work-in-progress prototype that one particular bada$$ group member has done an amazing job with.', cover: 'pc3' });
 
   // WoZ Tasklist
   tasklist.insert({ 
     projectId: 1, 
-    title: 'Task 1', 
-    desc: 'This is complicated task.', 
+    title: 'Main Character Sketch', 
+    desc: 'Need to nail down exactly who the "young girl" is.', 
     deadline: new Date('December 17, 1995 03:24:00'), 
     completed: false, 
     comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], snapshots: [{ title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
   });
   tasklist.insert({ 
     projectId: 1, 
-    title: 'Task 2', 
-    desc: 'This is complicated task.', 
+    title: 'ACT I rough draft', 
+    desc: 'I have a plot line of what I want to happen, but I need to write the real rough draft.', 
     deadline: null, 
     completed: false, 
     comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], 
@@ -78,8 +78,8 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   });
   tasklist.insert({ 
     projectId: 1, 
-    title: 'Task 3', 
-    desc: 'This is complicated task.', 
+    title: 'Develop Supporting Characters List', 
+    desc: 'There has to be more characters than just her!', 
     deadline: new Date('December 17, 1995 03:24:00'), 
     completed: false, 
     comments: [], 
