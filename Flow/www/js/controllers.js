@@ -2,7 +2,6 @@ var Flow = angular.module('starter.controllers', [])
 
 Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $window, $location, projects, tasklist, notelist) {
   // To Do:
-  // replace WoZ data
 
   // Form data for the login modal
   $scope.AIData = {};
@@ -52,9 +51,9 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale", cover: "idea2" });
 
   // WoZ Projects
-  projects.insert({ title: 'Curtain Calls', desc: 'My very first attempt at playwrighting, about the struggles of a young girl attempting to break into the Broadway scene.', cover: 'pc1' });
-  projects.insert({ title: 'Winter Solstice', desc: 'An intricate piano piece seeking to capture the beauty of the seasonal change into Winter.', cover: 'pc2' });
-  projects.insert({ title: 'High Fidelity Prototype', desc: 'A work-in-progress prototype that one particular bada$$ group member has done an amazing job with.', cover: 'pc3' });
+  projects.insert({ title: 'Curtain Calls', desc: 'My first attempt at playwriting, about the struggles of a young girl attempting to break into the Broadway scene.', cover: 'pc1' });
+  projects.insert({ title: 'Winter Solstice', desc: 'An intricate piano piece to capture the beauty of the yearly seasonal change into Winter.', cover: 'pc2' });
+  projects.insert({ title: 'High Fidelity Prototype', desc: 'A work-in-progress prototype that one particular bada$$ member has done an amazing job with.', cover: 'pc3' });
 
   // WoZ Tasklist
   tasklist.insert({ 
@@ -67,14 +66,14 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   });
   tasklist.insert({ 
     projectId: 1, 
-    title: 'ACT I rough draft', 
+    title: 'Act I rough draft', 
     desc: 'I have a plot line of what I want to happen, but I need to write the real rough draft.', 
     deadline: null, 
     completed: false, 
     comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], 
     snapshots: [
-    { title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, 
-    { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
+    { title: 'Scene 1', desc: 'First Scene', snap: 'snap1.png' }, 
+    { title: 'Scene 2', desc: 'Second Scene', snap: 'snap2.png' }] 
   });
   tasklist.insert({ 
     projectId: 1, 
@@ -84,13 +83,13 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
     completed: false, 
     comments: [], 
     snapshots: [
-    { title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, 
-    { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
+    { title: 'Character 1', desc: 'A possible secondary female character.', snap: 'snap1.png' }, 
+    { title: 'Character 2', desc: 'A possible secondary male character.', snap: 'snap2.png' }] 
   });
   tasklist.insert({ 
     projectId: 2, 
-    title: 'Task 4', 
-    desc: 'This is complicated task.', 
+    title: 'Develop the chorus.', 
+    desc: 'Need to get the bare bones down.', 
     deadline: null, 
     completed: false, 
     comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], 
@@ -98,22 +97,22 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   });
   tasklist.insert({ 
     projectId: 2, 
-    title: 'Task 5', 
-    desc: 'This is complicated task.', 
+    title: 'Develop the bridge.', 
+    desc: 'It needs to be something mind-blowing!', 
     deadline: new Date('December 17, 1995 03:24:00'), 
     completed: false, 
     comments: [{ author: 'Peter Thiel', comment: 'I would fund that' }, { author: 'Lindsay Lohan', comment: 'Hi, my name is Lindsay Lohan and I add nothing constructive to the conversation' }], 
     snapshots: [
-    { title: 'Snapshot 1', desc: 'A UI sketch I made for screen X', snap: 'snap1.png' }, 
-    { title: 'Snapshot 2', desc: 'A audio recording of the solo section of my latest song', snap: 'snap2.png' }] 
+    { title: 'A potential Key', desc: 'What do you guys think?  Major or Minor?', snap: 'snap1.png' }, 
+    { title: 'A tune snippet', desc: 'Mind-blowing enough?', snap: 'snap2.png' }] 
   });
 
   // WoZ notelist
-  notelist.insert({ projectId: 1, title: 'Note 1', desc: 'This is inspiring note.' });
-  notelist.insert({ projectId: 1, title: 'Note 2', desc: 'This is inspiring note.' });
-  notelist.insert({ projectId: 2, title: 'Note 3', desc: 'This is inspiring note.' });
-  notelist.insert({ projectId: 2, title: 'Note 4', desc: 'This is inspiring note.' });
-  notelist.insert({ projectId: 2, title: 'Note 5', desc: 'This is inspiring note.' });
+  notelist.insert({ projectId: 1, title: 'Flaws?', desc: 'She needs some serious character flaws...Maybe lack of discipline?' });
+  notelist.insert({ projectId: 1, title: 'New York Bar', desc: 'I think a seedy New York Bar should factor in prominently...' });
+  notelist.insert({ projectId: 2, title: 'Pandora', desc: 'I need to remember to listen to Pandora more often for inspiration.' });
+  notelist.insert({ projectId: 2, title: 'Harp Solo', desc: 'Try to remember that one piece by that one guy' });
+  notelist.insert({ projectId: 2, title: 'Meredith?', desc: 'Meredith was humming a really interesting tune a while ago...' });
 })
 
 Flow.controller('HomeCtrl', function($scope, projects, ideaboard) {
@@ -379,7 +378,7 @@ Flow.controller('TaskCtrl', function($scope, tasklist, $location, $window, $ioni
       buttonClicked: function(index) {
         console.log('sanity');
         $scope.task.snapshots.push(
-          { title: 'New Snapshot', desc: 'Look at this beautiful new snapshot', snap: 'snap1.png' }
+          { title: 'New Snapshot', desc: 'Look at this beautiful new snapshot!', snap: 'snap1.png' }
         );
         return true;
       }
