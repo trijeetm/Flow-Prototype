@@ -10,7 +10,8 @@
 	</ion-nav-buttons>
 	
   <ion-content class="has-header">
-  	<div class="ideaboard container">
+  <div class="container">
+  	<div class="ideaboard">
 		<div class="seperator">Ideaboard</div>
   	  	<div class="item item-text-wrap idea" ng-repeat="idea in ideaboard.slice().reverse()" ng-click="showIdeaActions(idea)">
   	    	<h4>{{idea.title}}</h4>
@@ -20,5 +21,6 @@
 	      	</div>
   	  	</div>
   	</div>
+  </div>
   </ion-content>
 </ion-view>
