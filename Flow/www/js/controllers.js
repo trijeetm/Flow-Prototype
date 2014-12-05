@@ -47,8 +47,8 @@ Flow.controller('AppCtrl', function($scope, $ionicModal, $timeout, ideaboard, $w
   $scope.goBack = goBack;
 
   // WoZ for ideaboard
-  $scope.addInspiration({ title: "Haider - A short play", desc: "An international representation of Shakespeare's Macbeth", cover: "idea1" });
-  $scope.addInspiration({ title: "Jazz Project", desc: "A synth based jazz composition on the C-minor pentatonic scale", cover: "idea2" });
+  $scope.addInspiration({ title: "Oblivion - Soundtrack", desc: "Some of the music used in this game might be useful inspiration for a the music in a play one day.", cover: "idea1" });
+  $scope.addInspiration({ title: "Jazz", desc: "I should totally write a jazz piece sometime.  Would be good practice!", cover: "idea2" });
 
   // WoZ Projects
   projects.insert({ title: 'Curtain Calls', desc: 'My first attempt at playwriting, about the struggles of a young girl attempting to break into the Broadway scene.', cover: 'pc1' });
